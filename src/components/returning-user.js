@@ -65,7 +65,7 @@ export class ReturningUser extends React.Component{
 }
 
 export default reduxForm({
-    form: 'contact',
+    form: 'returnUser',
     onSubmitFail: (errors, dispatch) =>
-        dispatch(focus('contact', Object.keys(errors)[0]))
+        dispatch(focus('returnUser', Object.keys(errors)[0]))
 })(ReturningUser);

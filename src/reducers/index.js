@@ -9,7 +9,7 @@ const initialState = {
 
 }
 
-export const exploreReducer = (state = initialState, action) => {
+export const exploreReducer=(state = initialState, action) => {
 
  if (action.type === actions.GET_COLLEGE_INPUT){
 		console.log(action.results);

@@ -8,7 +8,11 @@ import SearchPage from './components/search-page'
 import SignIn from './components/sign-in'
 import SignUp from './components/sign-up'
 
+import { getCollegeInputCall } from './actions';
+import { connect } from 'react-redux';
+
 class App extends Component {
+
   render() {
     return (
       <Router>

@@ -3,11 +3,10 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import Navigation from './nav';
-import SearchCollegesForm from './search-colleges-form';
+import RegionDropDownSelect from './region-dropdown'
 
-import { getCollegeInputCall } from '../actions';
 
-export class SearchCollegesPage extends React.Component{
+export default class SearchCollegesPage extends React.Component{
 
 	render(){
 
@@ -24,7 +23,7 @@ export class SearchCollegesPage extends React.Component{
 					            </div>
 					    </div>
 			            <div class="col-6 container search-colleges">
-			            	<SearchCollegesForm />
+			            	<RegionDropDownSelect />
 			            </div>
 			        </div>
 			    </section>
@@ -32,11 +31,3 @@ export class SearchCollegesPage extends React.Component{
 		)
 	}
 }
-
-const mapStateToProps = state => ({
-	searchProgramInput : state.searchProgramInput, 
-	searchRegionInput : state.searchRegionInput, 
-	searchStateInput : state.searchStateInput
-})
-
-export default connect(mapStateToProps)(SearchCollegesPage)
