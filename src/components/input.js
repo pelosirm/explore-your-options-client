@@ -7,16 +7,16 @@ export default class Input extends React.Component {
         }
     }
     render() {
-        const Element = this.props.element || 'input';
+        const Element=this.props.element || 'input';
 
         let error;
         if (this.props.meta.touched && this.props.meta.error) {
-            error = <div className="form-error">{this.props.meta.error}</div>;
+            error=<div className="form-error">{this.props.meta.error}</div>;
         }
 
         let warning;
         if (this.props.meta.touched && this.props.meta.warning) {
-            warning = (
+            warning=(
                 <div className="form-warning">{this.props.meta.warning}</div>
             );
         }
@@ -32,8 +32,8 @@ export default class Input extends React.Component {
                     {...this.props.input}
                     id={this.props.input.name}
                     type={this.props.type}
-                    placeholder = {this.props.placeholder}
-                    ref={input => (this.input = input)}
+                    placeholder={this.props.placeholder}
+                    ref={input => (this.input=input)}
                 />
             </div>
         );

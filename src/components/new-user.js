@@ -1,8 +1,7 @@
 import React from 'react';
 import { reduxForm, Field, focus } from 'redux-form';
-import { Link } from 'react-router-dom';
 
-import {required, nonEmpty, email} from '../validators';
+import {required, nonEmpty} from '../validators';
 import Input from './input';
 
 export class NewUser extends React.Component{

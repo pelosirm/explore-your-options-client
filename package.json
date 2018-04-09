@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "description": "Search potential careers and colleges to decide where you want to go.",
-  "main": "js/index.js",
+  "main": "src/index.js",
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
     "chokidar-cli": "^1.2.0",
@@ -24,6 +24,7 @@
     "react-widgets": "^4.2.6",
     "redux": "^3.6.0",
     "redux-form": "^7.3.0",
+    "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
     "rimraf": "^2.6.2",
     "unirest": "^0.5.1"

@@ -50,8 +50,50 @@ export const getCollegeInputCall = () => dispatch => {
 		})
 		.then(collegeInfo => {
 			dispatch(getCollegeInput(collegeInfo))
+			console.log(collegeInfo)
+			return collegeInfo
 		})
 		.catch(err=>{
 			dispatch(getCollegeInputError(err))
+			const message = {
+				message: err
+			}
+			console.log(err)
+			return message;
+		})
+}
+
+export const CAREER_QUERY_SUCCESS = 'CAREER_QUERY_SUCCESS';
+export const careerQuerySuccess = (results,state) => ({
+	type: CAREER_QUERY_SUCCESS, 
+	results, 
+	state
+})
+
+export const CAREER_QUERY_ERROR = 'CAREER_QUERY_ERROR';
+export const careerQueryError = results => ({
+	type: CAREER_QUERY_ERROR,
+	results
+})
+
+export const getCareerQueryCall = (search) => dispatch => {
+	fetch(`https://explore-your-options.herokuapp.com/career-search/?career=${search.career}&state=${search.state}`)
+		.then(res=>{
+			if(!res.ok){
+				return Promise.reject(res.statusText)
+			}
+			return res.json();
+		})
+		.then(careers => {
+			dispatch(careerQuerySuccess(careers,search.state))
+			console.log(careers)
+			return careers
+		})
+		.catch(err=>{
+			dispatch(careerQueryError(err))
+			const message = {
+				message: err
+			}
+			return message;
 		})
 }

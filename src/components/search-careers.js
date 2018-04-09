@@ -1,26 +1,32 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
-
 import Navigation from './nav'
+import * as actions from '../actions'
+import history from '../history' 
 
-import { getCareerInputCall } from '../actions'
 
 export class SearchCareersPage extends React.Component{
 
 componentWillMount() {
-	this.props.dispatch(getCareerInputCall());
+	this.props.dispatch(actions.getCareerInputCall());
 }
 
+onSubmit(values){
+	console.log(values)
+	this.props.dispatch(actions.getCareerQueryCall(values))
+	history.push('/career-results')
+}
 
 render() {
 
-	const searchCareerInput = this.props.searchCareerInput.map((career,index)=>(
+	const searchCareerInput=this.props.searchCareerInput.map((career,index)=>(
 		<option value={career.OCC_CODE} key={index}> {career.OCC_TITLE} </option>
 		));
 
-	const searchCareerStateInput = this.props.searchCareerStateInput.map((state,index)=>(
-		<option value ={state.Abbreviation} key={index}>{state.State}</option>
+	const searchCareerStateInput=this.props.searchCareerStateInput.map((state,index)=>(
+		<option value={state.Abbreviation} key={index}>{state.State}</option>
 		));
 
 	return (
@@ -30,28 +36,42 @@ render() {
 	        <h1> Explore </h1>
 	        <div className="row">
 	            <div className="col-6 container search-careers">
-	            	<form class="form-search-careers">
+	            	<form class="form-search-careers" onSubmit={this.props.handleSubmit(values => this.onSubmit(values)
+						)}>
 	            		<legend> Search Careers </legend>
-	            			<div class="center-on-page">
-	            				<div class="select">
-	            					<select name="career" id="career-select">
-	            						<option>Select Career</option>
-	            						{ searchCareerInput }
-	            						
-	            					</select>
+	            			<div className="center-on-page">
+	            				<div className="select">
+	            					<Field 
+										name="career"
+										component="select"
+										type="select"
+										valuefield="value"
+										textfield="career">
+										<option> Select Career </option>
+										{ searchCareerInput }
+									</Field>
 	            				</div>
 	            				<div class="select">
-	            					<select name="state" id="state-career-select">
-	            						<option>Select State</option>
-	            						{ searchCareerStateInput }
-	            					</select>
+	            					<Field 
+										name="state"
+										component="select"
+										type="select"
+										valuefield="value"
+										textfield="state">
+										<option> Select State </option>
+										{ searchCareerStateInput }
+									</Field>
 	            				</div>
-	            				<input type="submit" value ="Submit"></input>
+	            				<button
+		                    		type="submit"
+		                    		disabled={this.props.pristine || this.props.submitting}>
+		                    		Submit
+		                		</button>
 	            			</div>
 	            	</form>
 	            </div>
 	            <div class="col-6 container search-colleges">
-	                <img src="assets/img/books.jpg" className="image"></img>
+	                <img src="assets/img/books.jpg" className="image" alt="bookshelf"></img>
 	                <div className="middle">
 	                    <div className="text"><Link to="/search-colleges-page">Search Colleges</Link></div>
 	                </div>
@@ -64,9 +84,14 @@ render() {
 }
 
 
-const mapStateToProps = state => ({
-	searchCareerInput : state.searchCareerInput, 
-	searchCareerStateInput : state.searchCareerStateInput
+const mapStateToProps=state => ({
+	searchCareerInput : state.exploreReducer.searchCareerInput, 
+	searchCareerStateInput : state.exploreReducer.searchCareerStateInput
 });
 
-export default connect(mapStateToProps)(SearchCareersPage)
+SearchCareersPage=connect(mapStateToProps)(SearchCareersPage)
+
+export default reduxForm({
+	form: 'career-select'
+})(SearchCareersPage)
+

@@ -11,7 +11,7 @@ export default class Navigation extends React.Component {
     <nav className="navigation navbar-fixed-top">
         <ul>
             <li className="left home">
-                <Link to="/"><a href="#"><i className="fab fa-fly" aria-hidden="true"></i> Explore Your Options</a></Link>
+                <Link to="/"><i className="fab fa-fly" aria-hidden="true"></i> Explore Your Options</Link>
             </li>
         </ul>
         <div className="sm-view">

@@ -12,13 +12,13 @@ export default class SearchPage extends React.Component {
 			        	<h1> Explore </h1>
 			        	<div className="row">
 			            	<div className="col-6 container search-careers">
-			                	<img src="assets/img/nasa.jpg" className="image"></img>
+			                	<img src="assets/img/nasa.jpg" className="image" alt="astronaut"></img>
 			                	<div className="middle">
 			                    	<div className="text"><Link to="/search-careers-page">Search Careers</Link></div>
 			                	</div>
 			            	</div>
-			            	<div class="col-6 container search-colleges">
-			                	<img src="assets/img/books.jpg" className="image"></img>
+			            	<div className="col-6 container search-colleges">
+			                	<img src="assets/img/books.jpg" className="image" alt="books"></img>
 			                	<div className="middle">
 			                   		<div className="text"><Link to="/search-colleges-page">Search Colleges</Link></div>
 			                	</div>
