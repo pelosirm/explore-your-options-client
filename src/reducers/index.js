@@ -41,7 +41,8 @@ export const exploreReducer=(state = initialState, action) => {
 				}
 			})
 		} else {
-			return Object.assign({},state,{
+			const output = 
+			 Object.assign({},state,{
 				searchCareerResults : {
 					career : action.results[0].OCC_TITLE, 
 					state : action.results[1].STATE, 
@@ -52,6 +53,8 @@ export const exploreReducer=(state = initialState, action) => {
 
 				}
 			})
+			console.log(output)
+			return output
 		}
 	}
 
