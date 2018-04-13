@@ -16,10 +16,12 @@ componentWillMount() {
 onSubmit(values){
 	console.log(values)
 	this.props.dispatch(actions.getCareerQueryCall(values))
+	console.log(this.props.dispatch(actions.getCareerQueryCall(values)))
 	history.push('/career-results')
 }
 
 render() {
+	let successMessage;
 
 	const searchCareerInput=this.props.searchCareerInput.map((career,index)=>(
 		<option value={career.OCC_CODE} key={index}> {career.OCC_TITLE} </option>
@@ -29,6 +31,22 @@ render() {
 		<option value={state.Abbreviation} key={index}>{state.State}</option>
 		));
 
+	if(this.props.submitSucceeded) {
+
+		successMessage = (
+					<div className="message message-success">
+						Message submitted successfully
+					</div>
+				);
+		}
+
+	let errorMessage; 
+		if(this.props.error) {
+			errorMessage = (
+				<div className="message message-error"> { this.props.error } </div>
+			)
+		}
+
 	return (
 		<div>
 		<Navigation />
@@ -36,7 +54,7 @@ render() {
 	        <h1> Explore </h1>
 	        <div className="row">
 	            <div className="col-6 container search-careers">
-	            	<form class="form-search-careers" onSubmit={this.props.handleSubmit(values => this.onSubmit(values)
+	            	<form className="form-search-careers" onSubmit={this.props.handleSubmit(values => this.onSubmit(values)
 						)}>
 	            		<legend> Search Careers </legend>
 	            			<div className="center-on-page">
@@ -51,7 +69,7 @@ render() {
 										{ searchCareerInput }
 									</Field>
 	            				</div>
-	            				<div class="select">
+	            				<div className="select">
 	            					<Field 
 										name="state"
 										component="select"
@@ -70,7 +88,7 @@ render() {
 	            			</div>
 	            	</form>
 	            </div>
-	            <div class="col-6 container search-colleges">
+	            <div className="col-6 container search-colleges">
 	                <img src="assets/img/books.jpg" className="image" alt="bookshelf"></img>
 	                <div className="middle">
 	                    <div className="text"><Link to="/search-colleges-page">Search Colleges</Link></div>

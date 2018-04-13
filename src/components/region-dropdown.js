@@ -1,16 +1,23 @@
 import React from 'react';
-import { Field, reduxForm } from 'redux-form';
+import { Field, reduxForm, formValueSelector, change } from 'redux-form';
 import { connect } from 'react-redux';
 import  * as actions from '../actions';
-import 'react-widgets/dist/css/react-widgets.css'
+
+const formSelector = formValueSelector('form');
 
 export class RegionDropDownSelect extends React.Component {
 
 
 	componentWillMount(){
     	this.props.dispatch(actions.getCollegeInputCall())
-
+  
   	}
+
+  	componentWillUpdate(nextProps) {
+    	if (this.props.state != nextProps.state) {
+      		this.props.dispatch(change('form', 'state', ''));
+    }
+}
 
 	onSubmit(values){
 		console.log(values)
@@ -18,19 +25,20 @@ export class RegionDropDownSelect extends React.Component {
 
 	render(){
 
+		
+
+
 		const searchRegion = this.props.searchRegionInput.map((region,index)=>(
 			<option value={region.CODE} key={index}> {region.REGION} </option>
 		))
 
-		const searchProgram= this.props.searchProgramInput.map((program,index)=>(
-			<option value={program.PROGRAM} key = {index}> {program.PROGRAM} </option>
+		const searchProgram=this.props.searchProgramInput.map((program,index)=>(
+			<option value={program.PROGRAM} key={index}> {program.PROGRAM} </option>
 		));
 
-		const searchStateInput = this.props.searchStateInput.map((state,index)=>(
-			<option value ={state.Abbreviation} key={index}>{state.State}</option>
+		const searchStateInput=this.props.searchStateInput.map((state,index)=>(
+			<option value={state.Abbreviation} key={index}>{state.State}</option>
 		));
-
-
 
 
 		return(
@@ -100,7 +108,8 @@ export class RegionDropDownSelect extends React.Component {
 const mapStateToProps = state => ({ 
     searchRegionInput : state.exploreReducer.searchRegionInput, 
     searchStateInput : state.exploreReducer.searchStateInput, 
-    searchProgramInput : state.exploreReducer.searchProgramInput
+    searchProgramInput : state.exploreReducer.searchProgramInput, 
+    state : formSelector(state, 'Select State')
 });
 
 RegionDropDownSelect = connect(mapStateToProps)(RegionDropDownSelect);

@@ -4,10 +4,13 @@ import { Link } from 'react-router-dom';
 
 import { required, nonEmpty } from '../validators';
 import Input from './input';
+import * as user from '../actions/user'
 
 export class ReturningUser extends React.Component{
 	onSubmit(values) {
 		console.log(values)
+		this.props.dispatch(user.loginUser(values))
+
 	}
 	render(){
 		let successMessage;
@@ -18,6 +21,7 @@ export class ReturningUser extends React.Component{
 						Message submitted successfully
 					</div>
 				);
+
 		}
 
 		let errorMessage; 

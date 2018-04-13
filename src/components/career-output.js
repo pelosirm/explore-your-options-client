@@ -6,6 +6,7 @@ export class CareerOutput extends React.Component{
 
 	render(){
 		console.log(this.props.searchCareerResults)
+		console.log(this.props.user)
 		return(
 			<div>
 				<Navigation />
@@ -14,12 +15,12 @@ export class CareerOutput extends React.Component{
 			    		<div className="col-12">
 				    		<p><span className="heavy emphasis orange">{ this.props.searchCareerResults.career}</span>
 				    		<br></br>
-				    		<span className="light"> ekjh </span></p>
+				    		<span className="light"> {this.props.searchCareerResults.state} </span></p>
 				    		<ul>
-				    			<li><span className="heavy">National Median Salary:</span><span id="nat-median-value">{this.props.searchCareerResults.nat_a_median}</span></li>
-				    			<li><span className="heavy"> Region Median Salary:</span> <span id="st-median-value">{this.props.searchCareerResults.st_a_median}</span></li>
-				    			<li><span className="heavy">Degree Requires:</span> <span id="education-value">{this.props.searchCareerResults.education}</span></li>
-				    			<li><span className="heavy">Experience Needed:</span> <span id="experience-value">{this.props.searchCareerResults.experience}</span></li>
+				    			<li><span className="heavy">National Median Salary:</span><span id="nat-median-value"> {this.props.searchCareerResults.nat_a_median}</span></li>
+				    			<li><span className="heavy"> Region Median Salary:</span> <span id="st-median-value"> {this.props.searchCareerResults.st_a_median}</span></li>
+				    			<li><span className="heavy">Degree Requires:</span> <span id="education-value"> {this.props.searchCareerResults.education}</span></li>
+				    			<li><span className="heavy">Experience Needed:</span> <span id="experience-value"> {this.props.searchCareerResults.experience}</span></li>
 				    		</ul>
 				    	</div>
 				    </div>
@@ -39,7 +40,8 @@ export class CareerOutput extends React.Component{
 
 
 const mapStateToProps= state=>({
-	searchCareerResults : state.exploreReducer.searchCareerResults
+	searchCareerResults : state.exploreReducer.searchCareerResults, 
+	user : state.exploreReducer.user
 })
 
 export default connect(mapStateToProps)(CareerOutput)

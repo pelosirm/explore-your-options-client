@@ -1,12 +1,12 @@
 import React from 'react';
 import { reduxForm, Field, focus } from 'redux-form';
-
 import {required, nonEmpty} from '../validators';
 import Input from './input';
+import * as user from '../actions/user'
 
 export class NewUser extends React.Component{
 	onSubmit(values){
-		console.log(values)
+        this.props.dispatch(user.createUser(values))
 	}
 
 	render(){

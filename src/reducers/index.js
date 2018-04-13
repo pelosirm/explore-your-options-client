@@ -1,17 +1,26 @@
 import * as actions from '../actions';
-
+import * as user from '../actions/user'
 const initialState = {
 	searchProgramInput : [], 
 	searchRegionInput : [], 
 	searchStateInput : [], 
 	searchCareerInput : [], 
 	searchCareerStateInput : [],
-	searchCareerResults : {}
+	searchCareerResults : {}, 
+	user : '', 
+	isAuthenticated : false
 
 }
 
 export const exploreReducer=(state = initialState, action) => {
- if (action.type === actions.GET_COLLEGE_INPUT){
+ 
+ if (action.type === user.CREATE_USER_SUCCESS || action.type === user.LOGIN_USER_SUCCESS){
+ 	return Object.assign({}, state, {
+		user : action.username,
+		isAuthenticated : true
+	})	
+ } 
+ else if (action.type === actions.GET_COLLEGE_INPUT){
 		const output = Object.assign({}, state, {
 				searchProgramInput : action.results[0],
 				searchStateInput : action.results[1],
