@@ -1,12 +1,14 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import NavLoggedIn from './nav-logged-in';
+import NavNotLoggedIn from './nav-not-logged';
 
 
-export default class Navigation extends React.Component {
-
-
+export class Navigation extends React.Component {
     render() {
+
     return (
     <nav className="navigation navbar-fixed-top">
         <ul>
@@ -15,25 +17,18 @@ export default class Navigation extends React.Component {
             </li>
         </ul>
         <div className="sm-view">
-            <ul className="center-float">
-                <li className="right">
-                    <a href="#" className="nav-signout">signout</a>
-                </li>
-                <li className="right">
-                    <Link to="/sign-in" className="nav-login">login</Link>
-                </li>
-                <li className="right">
-                    <Link to="/sign-up" className="nav-sign-up">sign up</Link>
-                </li>
-                <li className="right">
-                    <a href="#" className="nav-saved">my saved info</a>
-                </li>
-                <li className="right">
-                    <Link to="/search-page" className="nav-search">search</Link>
-                </li>
-            </ul>
+            { this.props.isAuthenticated 
+                ? <NavLoggedIn />
+                : <NavNotLoggedIn />
+            }
         </div>
     </nav>
     )
 }
 }
+
+const mapStateToProps=state=>({
+    isAuthenticated : state.exploreReducer.isAuthenticated
+})
+
+export default connect(mapStateToProps)(Navigation)

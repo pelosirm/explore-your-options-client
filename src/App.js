@@ -25,7 +25,7 @@ class App extends Component {
             <PrivateRoute path="/search-page" component={SearchPage} />
             <Route exact path="/sign-in" component={SignIn} />
             <Route exact path="/sign-up" component={SignUp} />
-            <Route exact path="/career-results" component={CareerOutput} />
+            <PrivateRoute exact path="/career-results" component={CareerOutput} />
           </Switch>
       </div>
       </Router>

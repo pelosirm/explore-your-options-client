@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Navigation from './nav';
+import { Link } from 'react-router-dom'
 
 export class CareerOutput extends React.Component{
 
 	render(){
-		console.log(this.props.searchCareerResults)
-		console.log(this.props.user)
+		
 		return(
 			<div>
 				<Navigation />
@@ -29,7 +29,7 @@ export class CareerOutput extends React.Component{
 				    		<button className="save-career-btn"> Save Career</button>
 				    	</div>
 				    </div>
-				    <p className="new-search center"><a href="#"> new search </a></p>
+				    <p className="new-search center"><Link to="/search-page"> new search </Link></p>
     			</section>
     		</div>
 
