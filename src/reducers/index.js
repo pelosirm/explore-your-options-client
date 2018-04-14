@@ -1,5 +1,9 @@
 import * as actions from '../actions';
-import * as user from '../actions/user'
+import * as user from '../actions/user';
+import * as saveData from '../actions/save-data';
+import * as message from '../actions/display-message'
+
+
 const initialState = {
 	searchProgramInput : [], 
 	searchRegionInput : [], 
@@ -8,7 +12,9 @@ const initialState = {
 	searchCareerStateInput : [],
 	searchCareerResults : {}, 
 	user : '', 
-	isAuthenticated : false
+	isAuthenticated : false, 
+	savedCareer : false, 
+	message:''
 
 }
 
@@ -19,8 +25,12 @@ export const exploreReducer=(state = initialState, action) => {
 		user : action.username,
 		isAuthenticated : true
 	})	
- } 
- else if (action.type === actions.GET_COLLEGE_INPUT){
+ } else if(action.type === message.DISPLAY_MESSAGE){
+ 	 return Object.assign({}, state, {
+		message : message.message
+	})
+ }	
+ 	else if (action.type === actions.GET_COLLEGE_INPUT){
 		const output = Object.assign({}, state, {
 				searchProgramInput : action.results[0],
 				searchStateInput : action.results[1],
@@ -65,6 +75,10 @@ export const exploreReducer=(state = initialState, action) => {
 			console.log(output)
 			return output
 		}
+	} else if ( action.type === saveData.SAVE_CAREER_SUCCESS) {
+		return Object.assign({}, state, {
+			savedCareer : true 
+		})
 	}
 
 	return state;

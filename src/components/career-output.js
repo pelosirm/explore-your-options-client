@@ -1,15 +1,30 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Navigation from './nav';
+import { bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom'
+
+import DisplayMessage from './message';
+import Navigation from './nav';
+
+import * as actions from '../actions/save-data';
 
 export class CareerOutput extends React.Component{
 
+	saveData(career,user){
+		console.log('fired')
+		let saveDataSet = career
+		saveDataSet.user = user
+		console.log(saveDataSet)
+		this.props.postCareerData(saveDataSet)
+	}
+
+
 	render(){
-		
+
 		return(
 			<div>
 				<Navigation />
+				<DisplayMessage message={'hello'} />
 			    <section className="career-results">
 			    	<div className="row career-column">
 			    		<div className="col-12">
@@ -26,7 +41,7 @@ export class CareerOutput extends React.Component{
 				    </div>
 				    <div className="row">
 				    	<div className="col-12">
-				    		<button className="save-career-btn"> Save Career</button>
+				    		<button className="save-career-btn" onClick={()=>this.saveData(this.props.searchCareerResults,this.props.user)}> Save Career</button>
 				    	</div>
 				    </div>
 				    <p className="new-search center"><Link to="/search-page"> new search </Link></p>
@@ -41,7 +56,14 @@ export class CareerOutput extends React.Component{
 
 const mapStateToProps= state=>({
 	searchCareerResults : state.exploreReducer.searchCareerResults, 
-	user : state.exploreReducer.user
+	user : state.exploreReducer.user, 
+	message : state.exploreReducer.message
 })
 
-export default connect(mapStateToProps)(CareerOutput)
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    postCareerData : actions.postCareerData
+  }, dispatch);
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(CareerOutput)

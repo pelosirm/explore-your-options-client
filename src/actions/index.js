@@ -50,7 +50,6 @@ export const getCollegeInputCall = () => dispatch => {
 		})
 		.then(collegeInfo => {
 			dispatch(getCollegeInput(collegeInfo))
-			console.log(collegeInfo)
 			return collegeInfo
 		})
 		.catch(err=>{
@@ -58,7 +57,6 @@ export const getCollegeInputCall = () => dispatch => {
 			const message = {
 				message: err
 			}
-			console.log(err)
 			return message;
 		})
 }
@@ -86,7 +84,6 @@ export const getCareerQueryCall = (search) => dispatch => {
 		})
 		.then(careers => {
 			dispatch(careerQuerySuccess(careers,search.state))
-			console.log(careers)
 			return careers
 		})
 		.catch(err=>{
