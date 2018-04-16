@@ -2,7 +2,7 @@ import * as actions from '../actions';
 import * as user from '../actions/user';
 import * as saveData from '../actions/save-data';
 import * as message from '../actions/display-message'
-
+import * as savedInfo from '../actions/saved-info'
 
 const initialState = {
 	searchProgramInput : [], 
@@ -14,7 +14,8 @@ const initialState = {
 	user : '', 
 	isAuthenticated : false, 
 	savedCareer : false, 
-	message:''
+	message:'', 
+	userSavedData : []
 
 }
 
@@ -26,10 +27,16 @@ export const exploreReducer=(state = initialState, action) => {
 		isAuthenticated : true
 	})	
  } else if(action.type === message.DISPLAY_MESSAGE){
+ 	 console.log(message.message)
  	 return Object.assign({}, state, {
-		message : message.message
+		message : action.message
 	})
- }	
+
+ } else if (action.type === message.HIDE_DISPLAY_MESSAGE){
+ 	 return Object.assign({}, state, {
+		message : ''
+	})
+	}	
  	else if (action.type === actions.GET_COLLEGE_INPUT){
 		const output = Object.assign({}, state, {
 				searchProgramInput : action.results[0],
@@ -51,9 +58,9 @@ export const exploreReducer=(state = initialState, action) => {
 			return Object.assign({},state,{
 				searchCareerResults : {
 					career : action.results[0].OCC_TITLE, 
-					state : '', 
+					state : action.state, 
 					nat_a_median : action.results[0].NAT_A_MEDIAN, 
-					st_a_median : '-', 
+					st_a_median : 'No Data', 
 					education : action.results[0].EDUCATION, 
 					experience : action.results[0].WORK_EXPERIENCE
 
@@ -78,6 +85,18 @@ export const exploreReducer=(state = initialState, action) => {
 	} else if ( action.type === saveData.SAVE_CAREER_SUCCESS) {
 		return Object.assign({}, state, {
 			savedCareer : true 
+		})
+	} else if (action.type === savedInfo.GET_USER_DATA_SUCCESS){
+		console.log(savedInfo.results)
+		debugger
+		return Object.assign({}, state, {
+			userSavedData : action.results
+		})
+	} else if (action.type === user.LOGOUT_USER) {
+		console.log('logged out')
+		return Object.assign({}, state, {
+			user : '', 
+			isAuthenticated : false 
 		})
 	}
 

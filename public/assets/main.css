@@ -62,6 +62,8 @@ html {
     right: 25%;
     border-radius: 25px;
     position: fixed;
+    top:0;
+    z-index:3000;
 }
 
 .error-message span {
@@ -250,6 +252,10 @@ button {
     width: 50%;
 }
 
+button:hover {
+    background-color: orange;
+}
+
 /* how it works section */
 
 .how-it-works {
@@ -370,6 +376,10 @@ button {
     color: white;
     font-size: 1.5em;
     padding: 16px 32px;
+}
+
+.text a{
+    color:white;
 }
 
 .search-careers-input,

@@ -10,6 +10,7 @@ import SignIn from './components/sign-in'
 import SignUp from './components/sign-up'
 import CareerOutput from './components/career-output'
 import PrivateRoute from './components/private-route'
+import SavedInfo from './components/saved-info'
 
 
 class App extends Component {
@@ -26,6 +27,7 @@ class App extends Component {
             <Route exact path="/sign-in" component={SignIn} />
             <Route exact path="/sign-up" component={SignUp} />
             <PrivateRoute exact path="/career-results" component={CareerOutput} />
+            <PrivateRoute exact path="/saved-info" component={SavedInfo} />
           </Switch>
       </div>
       </Router>

@@ -1,9 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+
 export default function NavNotLoggedIn(props){
+
 	return(
-		<ul className="center-float">
+		<ul>
                 <li className="right">
                     <Link to="/sign-in" className="nav-login">login</Link>
                 </li>

@@ -1,4 +1,5 @@
 import history from '../history'
+import * as message from './display-message';
 
 export const CREATE_USER_SUCCESS = 'CREATE_USER_SUCCESS';
 export const createUserSuccess = (results,username) => ({
@@ -26,6 +27,7 @@ export const createUser = user => dispatch => {
             }
         }).then(res => {
             if(!res.ok){
+            	dispatch(message.displayMessage('Oops! something went wrong'))
 				return Promise.reject(res.statusText)
 			}
 			return res.json();
@@ -72,5 +74,17 @@ export const loginUser = user => dispatch => {
 			history.push('/search-page')
 			return response
 		})
+
+}
+
+export const LOGOUT_USER = 'LOGOUT_USER';
+export const logoutUser = () => ({
+	type: LOGOUT_USER
+})
+
+export const logoutUserRedirect = () => dispatch => {
+	console.log('logout fired')
+	dispatch(logoutUser())
+	history.push('/')
 
 }

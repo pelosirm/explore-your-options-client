@@ -94,3 +94,38 @@ export const getCareerQueryCall = (search) => dispatch => {
 			return message;
 		})
 }
+
+
+export const COLLEGE_QUERY_SUCCESS = 'COLLEGE_QUERY_SUCCESS';
+export const collegeQuerySuccess = (results,state) => ({
+	type: CAREER_QUERY_SUCCESS, 
+	results, 
+	state
+})
+
+export const COLLEGE_QUERY_ERROR = 'COLLEGE_QUERY_ERROR';
+export const collegeQueryError = results => ({
+	type: CAREER_QUERY_ERROR,
+	results
+})
+
+export const getCollegeQueryCall = (search) => dispatch => {
+	fetch(`https://explore-your-options.herokuapp.com/career-search/?career=${search.career}&state=${search.state}`)
+		.then(res=>{
+			if(!res.ok){
+				return Promise.reject(res.statusText)
+			}
+			return res.json();
+		})
+		.then(careers => {
+			dispatch(collegeQuerySuccess(careers,search.state))
+			return careers
+		})
+		.catch(err=>{
+			dispatch(collegeQueryError(err))
+			const message = {
+				message: err
+			}
+			return message;
+		})
+}

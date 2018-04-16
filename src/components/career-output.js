@@ -11,21 +11,34 @@ import * as actions from '../actions/save-data';
 export class CareerOutput extends React.Component{
 
 	saveData(career,user){
-		console.log('fired')
 		let saveDataSet = career
 		saveDataSet.user = user
 		console.log(saveDataSet)
 		this.props.postCareerData(saveDataSet)
+		
+		console.log(this.props.message)
+		debugger
 	}
 
 
 	render(){
+		console.log(this.props.message)
+		let displayMessage;
+
+		if(this.props.message) {
+			displayMessage = (
+					<DisplayMessage message={this.props.message} />
+				);
+
+		}
 
 		return(
 			<div>
 				<Navigation />
-				<DisplayMessage message={'hello'} />
+				{ displayMessage }
+				
 			    <section className="career-results">
+
 			    	<div className="row career-column">
 			    		<div className="col-12">
 				    		<p><span className="heavy emphasis orange">{ this.props.searchCareerResults.career}</span>

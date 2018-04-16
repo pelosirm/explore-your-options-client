@@ -1,6 +1,7 @@
 import React from 'react';
 import { reduxForm, Field, focus } from 'redux-form';
 import {required, nonEmpty} from '../validators';
+import { Link } from 'react-router-dom'
 import Input from './input';
 import * as user from '../actions/user'
 
@@ -62,7 +63,7 @@ export class NewUser extends React.Component{
                     		disabled={this.props.pristine || this.props.submitting}>
                     		Submit
                 		</button>
-		                <p> already a user? <a href="#" class="nav-login">login</a></p>
+		                <p> already a user? <Link to="/sign-in" class="nav-login">login</Link></p>
 		            </form>
 		        </div>
 		    </section>

@@ -1,6 +1,7 @@
 import React from 'react';
-import { Field, reduxForm, formValueSelector, change } from 'redux-form';
-import { connect } from 'react-redux';
+import { Field, reduxForm, formValueSelector, change, actionCreators } from 'redux-form';
+import { connect,dispatch } from 'react-redux';
+import { bindActionCreators } from 'redux'
 import  * as actions from '../actions';
 
 const formSelector = formValueSelector('form');
@@ -13,20 +14,39 @@ export class RegionDropDownSelect extends React.Component {
   
   	}
 
-  	componentWillUpdate(nextProps) {
-    	if (this.props.state != nextProps.state) {
-      		this.props.dispatch(change('form', 'state', ''));
-    }
-}
+
+  	onFormChange(e) {
+  		const { name } = e.target
+
+  		if(name === 'region'){
+  			this.props.dispatch(change('collegeSelect', 'state', null))
+  		} else if ( name === 'state'){
+  			this.props.dispatch(change('collegeSelect', 'region', null))
+  		}
+  		
+  		// const { name, value } = e.target
+  		// this.props.dispatch(this.props.change('state', undefined))
+  		// this.props.change(e.target,undefined)
+  		// this.props.changeFieldValue('region', undefined)
+  		// if(name === 'region'){
+  		// 	e.target.form.querySelectorAll('select')[3].value=undefined
+  		// } if (name === 'state') {
+  		// 	e.target.form.querySelectorAll('select')[2].value=undefined
+  		// }
+  		// debugger
+
+
+  		// if (!name) return
+ 
+		}
 
 	onSubmit(values){
 		console.log(values)
+
+
 	}
 
 	render(){
-
-		
-
 
 		const searchRegion = this.props.searchRegionInput.map((region,index)=>(
 			<option value={region.CODE} key={index}> {region.REGION} </option>
@@ -44,7 +64,7 @@ export class RegionDropDownSelect extends React.Component {
 		return(
 			<form className="form-search-colleges"
 				onSubmit={this.props.handleSubmit(values => this.onSubmit(values)
-						)}>
+						)} onChange={(e)=>this.onFormChange(e)}>
 			            		<legend> Search Colleges </legend>
 			            		<div className="center-on-page">
 			            			<div className="select">
@@ -72,23 +92,25 @@ export class RegionDropDownSelect extends React.Component {
 									</div>
 									<div className="select">
 										<Field 
+											id="region-select"
 											name="region"
 											component="select"
 											type="select"
 											valuefield="value"
 											textfield="region">
-											<option> Select Region </option>
+											<option value='undefined'> Select Region </option>
 											{ searchRegion }
 										</Field>
 									</div>
 									<div className="select">
 										<Field 
+											id="state-select"
 											name="state"
 											component="select"
 											type="select"
 											valuefield="value"
 											textfield="state">
-											<option> Select State </option>
+											<option value='undefined'> Select State </option>
 											{ searchStateInput }
 										</Field>
 									</div>
@@ -109,12 +131,20 @@ const mapStateToProps = state => ({
     searchRegionInput : state.exploreReducer.searchRegionInput, 
     searchStateInput : state.exploreReducer.searchStateInput, 
     searchProgramInput : state.exploreReducer.searchProgramInput, 
-    state : formSelector(state, 'Select State')
 });
 
-RegionDropDownSelect = connect(mapStateToProps)(RegionDropDownSelect);
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators({
+     	change : change
+    }, dispatch)
+  };
+}
+
+
+RegionDropDownSelect = connect(mapStateToProps,mapDispatchToProps)(RegionDropDownSelect);
 
 export default reduxForm({
-	form: 'college-select'
+	form: 'collegeSelect'
 })(RegionDropDownSelect)
 

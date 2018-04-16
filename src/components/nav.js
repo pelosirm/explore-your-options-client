@@ -6,6 +6,7 @@ import NavLoggedIn from './nav-logged-in';
 import NavNotLoggedIn from './nav-not-logged';
 
 
+
 export class Navigation extends React.Component {
     render() {
 
@@ -15,13 +16,13 @@ export class Navigation extends React.Component {
             <li className="left home">
                 <Link to="/"><i className="fab fa-fly" aria-hidden="true"></i> Explore Your Options</Link>
             </li>
-        </ul>
-        <div className="sm-view">
+        <div>
             { this.props.isAuthenticated 
                 ? <NavLoggedIn />
                 : <NavNotLoggedIn />
             }
         </div>
+        </ul>
     </nav>
     )
 }

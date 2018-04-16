@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 
 export default function HowItWorks(props) {
     return (
@@ -44,7 +45,7 @@ export default function HowItWorks(props) {
         </div>
         <div className="row">
             <div className="col-12">
-                <button className="button sign-up-btn"> Sign Up</button>
+                <button className="button sign-up-btn"><Link to="sign-up"> Sign Up</Link></button>
             </div>
         </div>
     </section>

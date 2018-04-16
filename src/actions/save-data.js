@@ -12,8 +12,6 @@ export const saveCareerError = results => ({
 	results
 })
 
-
-
 export const postCareerData = career => dispatch => {
 	fetch('https://explore-your-options.herokuapp.com/career/create-new', {
             method: 'POST',
@@ -25,12 +23,46 @@ export const postCareerData = career => dispatch => {
             }
         }).then(res => {
             if(!res.ok){
+            	dispatch(message.displayMessageTimer('Oops! something went wrong'))
 				return Promise.reject(res.statusText)
 			}
 			return res.json();
         }).then(response => {
 			dispatch(saveCareerSuccess(response))
-			dispatch(message.displayMessage('Career Added'))
+			dispatch(message.displayMessageTimer(response))
+			return response
+		})
+
+}
+
+export const SAVE_COLLEGE_SUCCESS = 'SAVE_COLLEGE_SUCCESS';
+export const saveCollegeSuccess = (results) => ({
+	type: SAVE_COLLEGE_SUCCESS, 
+	results
+})
+
+export const SAVE_COLLEGE_ERROR = 'SAVE_COLLEGE_SUCCESS';
+export const saveCollegeError = results => ({
+	type: SAVE_COLLEGE_ERROR,
+	results
+})
+
+export const postCollegeData = college => dispatch => {
+	fetch('https://explore-your-options.herokuapp.com/career/create-new', {
+            method: 'POST',
+            body: JSON.stringify(college),
+            dataType:"json",
+            headers: {
+                'Content-Type': 'application/json', 
+
+            }
+        }).then(res => {
+            if(!res.ok){
+				return Promise.reject(res.statusText)
+			}
+			return res.json();
+        }).then(response => {
+			dispatch(saveCollegeSuccess(response))
 			return response
 		})
 
