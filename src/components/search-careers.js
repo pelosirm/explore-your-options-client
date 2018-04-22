@@ -21,8 +21,6 @@ onSubmit(values){
 }
 
 render() {
-	let successMessage;
-
 	const searchCareerInput=this.props.searchCareerInput.map((career,index)=>(
 		<option value={career.OCC_CODE} key={index}> {career.OCC_TITLE} </option>
 		));
@@ -30,15 +28,6 @@ render() {
 	const searchCareerStateInput=this.props.searchCareerStateInput.map((state,index)=>(
 		<option value={state.Abbreviation} key={index}>{state.State}</option>
 		));
-
-	if(this.props.submitSucceeded) {
-
-		successMessage = (
-					<div className="message message-success">
-						Message submitted successfully
-					</div>
-				);
-		}
 
 	let errorMessage; 
 		if(this.props.error) {
@@ -52,6 +41,7 @@ render() {
 		<Navigation />
 	    <section className="search-options">
 	        <h1> Explore </h1>
+	        { errorMessage }
 	        <div className="row">
 	            <div className="col-6 container search-careers">
 	            	<form className="form-search-careers" onSubmit={this.props.handleSubmit(values => this.onSubmit(values)

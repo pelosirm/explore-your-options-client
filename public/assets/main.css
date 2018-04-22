@@ -510,6 +510,7 @@ select::-ms-expand {
 .return-to-search a {
     color: black;
     font-size: 18px;
+    margin-top:30px;
 }
 
 .new-search a:hover,
@@ -561,6 +562,15 @@ select::-ms-expand {
     display: inline-block;
     line-height: 40px;
     font-size: 40px;
+}
+
+.college-results .emphasis {
+    font-size: 1em;
+    color: orange;
+    height: 59px;
+    display: inline-block;
+    line-height: 20px;
+    font-size: 22px;
 }
 
 .center {

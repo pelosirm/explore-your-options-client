@@ -55,12 +55,12 @@ export class CollegeDetails extends React.Component {
 
 		if(speciality){
 		    for(let i=0;i<5; i++){
-		    	top5Programs.push(<li>{i+1}. {speciality[i][0]} - {speciality[i][1]}% </li>)
+		    	top5Programs.push(<li key={i}>{i+1}. {speciality[i][0]} - {speciality[i][1]}% </li>)
 		    }
 
 		    for(let i=5; i<speciality.length;i++){
 		    	if(speciality[i][1] !== 0) {
-		    		otherPrograms.push(<li> {speciality[i][0]} </li>)
+		    		otherPrograms.push(<li key={i}> {speciality[i][0]} </li>)
 		    	}
 		    	
 		    }
@@ -74,14 +74,14 @@ export class CollegeDetails extends React.Component {
 		<section className="college-more-detail">
 		<div className="row career-column">
 			<div className="col-12">  
-			<p><span className="heavy emphasis">${college.INSTNM}</span><br></br><span className="light"> {college.CITY}, {college.STABBR}</span><br></br>{college.UGDS} undergraduate students</p>
+			<p><span className="heavy emphasis">{college.INSTNM}</span><br></br><span className="light"> {college.CITY}, {college.STABBR}</span><br></br>{college.UGDS} undergraduate students</p>
   			<ul>
   				<li><span className="heavy"> School Details: </span>
   				{ tagString }
 				</li>
 				<li><span className="heavy">Average Annual Cost:</span> {college.NPT4}</li>
     			<li><span className="heavy"> Graduation Rate:</span> {Math.round(college.C150_L4_POOLED_SUPP*100)} %</li>
-    			<li><span class="heavy">Average Debt:</span> {college.GRAD_DEBT_MDN_SUPP}</li>
+    			<li><span className="heavy">Average Debt:</span> {college.GRAD_DEBT_MDN_SUPP}</li>
     		</ul>
    				<button className="accordion" onClick={this.handleCostClick}>
     				<i className="fa fa-chevron-down" aria-hidden="true"></i> Cost Details </button>
@@ -133,7 +133,9 @@ export class CollegeDetails extends React.Component {
     		<div className="col-12">
     			<button className="save-college-btn"> Save College</button>
     		</div>
-    			<p className="return-search new-search center"><a href="#"> return to search </a></p>
+    		<div className="col-12">
+    			<p className="return-to-search new-search center"><a href="#"> return to search </a></p>
+    		</div>
    		</div>
    	</section>
    	</div>

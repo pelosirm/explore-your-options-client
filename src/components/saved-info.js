@@ -9,23 +9,29 @@ import RenderSavedCollegeData from './saved-college-data';
 export class SavedInfo extends React.Component{
 
 	componentWillMount(){
+		debugger
 		this.props.dispatch(actions.getUserData({ user: this.props.user}))
 	}
 
 	render(){
-		console.log(this.props.userSavedData)
+		const careers = this.props.userSavedData[1]
+		const colleges = this.props.userSavedData[0]
 		return(
-			<div className="row">
-				<div className="col-12">
-					<h1> Saved Info </h1>
-					<p className="divide"> select one career and one college to compare return on investment </p>
-					<p className="divide orange"> careers </p>
-					{this.props.userSavedData ? <RenderSavedCareerData careers={this.props.userSavedData[1]} /> : null}
-					<p className="divide orange"> colleges</p>
-					{this.props.userSavedData ? <RenderSavedCareerData colleges={this.props.userSavedData[0]} /> : null}
-				</div>
+			<div>
+				<Navigation />
+				    <section className="saved-options">
+						<div className="row">
+							<div className="col-12">
+								<h1> Saved Info </h1>
+								<p className="divide"> select one career and one college to compare return on investment </p>
+								<p className="divide orange"> careers </p>
+								{ careers ? <RenderSavedCareerData careers={careers} /> : null}
+								<p className="divide orange"> colleges</p>
+								{ colleges ? <RenderSavedCollegeData colleges={colleges} /> : null}
+							</div>
+						</div>
+					</section>
 			</div>
-
 			)
 		}
 		

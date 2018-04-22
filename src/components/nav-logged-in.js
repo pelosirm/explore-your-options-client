@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { logoutUserRedirect } from '../actions/user';
 import { bindActionCreators } from 'redux';
-import { dispatch, connect } from 'react-redux'
+import { connect } from 'react-redux'
 
 export class NavLoggedIn extends React.Component{
    
