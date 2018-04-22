@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { required, nonEmpty } from '../validators';
 import Input from './input';
 import * as user from '../actions/user'
+import DisplayMessage from './message'
 
 export class ReturningUser extends React.Component{
 	onSubmit(values) {
@@ -14,7 +15,6 @@ export class ReturningUser extends React.Component{
 	}
 	render(){
 		let successMessage;
-
 		if(this.props.submitSucceeded) {
 			successMessage = (
 					<div className="message message-success">
@@ -30,7 +30,17 @@ export class ReturningUser extends React.Component{
 				<div className="message message-error"> { this.props.error } </div>
 			)
 		}
+
+		let displayMessage;
+		if(this.props.message) {
+			displayMessage = (
+					<DisplayMessage message={this.props.message} />
+				);
+
+		}
+		
 		return(
+			
 			<section className="sign-up">
 		        <div className="login input-square returning-user">
 		            <form className="form-returning-user"
@@ -40,7 +50,7 @@ export class ReturningUser extends React.Component{
 		            	{ successMessage }
 		            	{ errorMessage }
 		                <legend> Login </legend>
-		                <p class='demo-user'> for demo username : 'demo' password : 'demo' </p>
+		                <p className='demo-user'> for demo username : 'demo' password : 'demo' </p>
 		                <Field 
 		                	name="username"
 		                	placeholder="username"

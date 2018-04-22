@@ -4,11 +4,23 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import NavLoggedIn from './nav-logged-in';
 import NavNotLoggedIn from './nav-not-logged';
+import DisplayMessage from './message';
 
 
 
 export class Navigation extends React.Component {
+
+
     render() {
+
+    let displayMessage;
+
+        if(this.props.message) {
+            displayMessage = (
+                    <DisplayMessage message={this.props.message} />
+                );
+
+    }
 
     return (
     <nav className="navigation navbar-fixed-top">
@@ -23,13 +35,15 @@ export class Navigation extends React.Component {
             }
         </div>
         </ul>
+        { displayMessage }
     </nav>
     )
 }
 }
 
 const mapStateToProps=state=>({
-    isAuthenticated : state.exploreReducer.isAuthenticated
+    isAuthenticated : state.exploreReducer.isAuthenticated, 
+    message : state.exploreReducer.message
 })
 
 export default connect(mapStateToProps)(Navigation)

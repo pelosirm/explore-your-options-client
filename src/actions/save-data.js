@@ -1,4 +1,5 @@
 import * as message from './display-message'
+import history from '../history'
 
 export const SAVE_CAREER_SUCCESS = 'SAVE_CAREER_SUCCESS';
 export const saveCareerSuccess = (results) => ({
@@ -63,6 +64,7 @@ export const postCollegeData = college => dispatch => {
 			return res.json();
         }).then(response => {
 			dispatch(saveCollegeSuccess(response))
+			history.push('/college-results')
 			return response
 		})
 

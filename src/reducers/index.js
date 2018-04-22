@@ -15,7 +15,9 @@ const initialState = {
 	isAuthenticated : false, 
 	savedCareer : false, 
 	message:'', 
-	userSavedData : []
+	userSavedData : [], 
+	searchCollegeResults : [], 
+	collegeDetail : {}
 
 }
 
@@ -86,7 +88,85 @@ export const exploreReducer=(state = initialState, action) => {
 		return Object.assign({}, state, {
 			savedCareer : true 
 		})
-	} else if (action.type === savedInfo.GET_USER_DATA_SUCCESS){
+	} else if (action.type === actions.COLLEGE_QUERY_SUCCESS){
+	
+		return Object.assign({}, state, {
+			searchCollegeResults : action.results
+		})
+
+	} else if (action.type === actions.COLLEGE_DETAIL_QUERY_SUCCESS){
+			let college = action.results
+			debugger
+
+			let tags = []
+			let speciality = []
+
+			tags.push(college.CONTROL)
+
+			//interate through tags
+
+			if(college.RELAFFIL !== 'NULL') {
+				tags.push(college.RELAFFIL)
+			}
+
+			if(college.HBCU === 1){
+				tags.push('Historically Black Colleges')
+			}
+
+			if(college.PBI === 1) {
+				tags.push('Predominantly Black Institution')
+			}
+
+			if(college.ANNHI === 1){
+				tags.push('Alaska Native Native Hawaiian serving institution')
+			}
+
+			if(college.TRIBAL === 1) {
+				tags.push('tribal college and university')
+			}
+
+			if(college.AANAPII === 1){
+				tags.push('Asian American Native American Pacific Islander-serving institution')
+			}
+
+			if(college.HSI === 1){
+				tags.push('Hispanic-serving institution')
+			}
+
+			if(college.NANTI === 1){
+				tags.push('Native American non-tribal institution')
+			}
+
+			if(college.MENONLY === 1){
+				tags.push('Men Only')
+			}
+
+			if(college.WOMENONLY === 1){
+				tags.push('Women Only')
+			}
+
+
+			for(let prop in college){
+				if(prop.match(/01/)){
+					speciality.push([prop.slice(2),(Math.round(college[prop]*100))])
+				}
+
+			}
+
+			//arrange specialties by popularity
+			speciality.sort(function(a,b){
+				return b[1] - a[1]
+			})
+
+			college.tags = tags 
+			college.speciality = speciality
+			
+			return Object.assign({}, state, {
+				collegeDetail : college
+			})
+	}
+
+		else if (action.type === savedInfo.GET_USER_DATA_SUCCESS){
 		console.log(savedInfo.results)
 		debugger
 		return Object.assign({}, state, {
@@ -98,7 +178,7 @@ export const exploreReducer=(state = initialState, action) => {
 			user : '', 
 			isAuthenticated : false 
 		})
-	}
+	} 
 
 	return state;
 

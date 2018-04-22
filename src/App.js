@@ -11,6 +11,8 @@ import SignUp from './components/sign-up'
 import CareerOutput from './components/career-output'
 import PrivateRoute from './components/private-route'
 import SavedInfo from './components/saved-info'
+import CollegeResults from './components/college-results-page'
+import CollegeDetails from './components/college-detail'
 
 
 class App extends Component {
@@ -27,6 +29,8 @@ class App extends Component {
             <Route exact path="/sign-in" component={SignIn} />
             <Route exact path="/sign-up" component={SignUp} />
             <PrivateRoute exact path="/career-results" component={CareerOutput} />
+            <Route exact path="/college-results" component={CollegeResults} />>
+            <Route path="/college-results/:id" component={CollegeDetails}></Route>
             <PrivateRoute exact path="/saved-info" component={SavedInfo} />
           </Switch>
       </div>

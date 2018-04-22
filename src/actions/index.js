@@ -1,3 +1,5 @@
+import history from '../history'
+
 export const GET_CAREER_INPUT = 'GET_CAREER_INPUT'; 
 export const getCareerInput = results => ({
 	type: GET_CAREER_INPUT, 
@@ -97,32 +99,65 @@ export const getCareerQueryCall = (search) => dispatch => {
 
 
 export const COLLEGE_QUERY_SUCCESS = 'COLLEGE_QUERY_SUCCESS';
-export const collegeQuerySuccess = (results,state) => ({
-	type: CAREER_QUERY_SUCCESS, 
-	results, 
-	state
+export const collegeQuerySuccess = (results) => ({
+	type: COLLEGE_QUERY_SUCCESS, 
+	results
 })
 
 export const COLLEGE_QUERY_ERROR = 'COLLEGE_QUERY_ERROR';
 export const collegeQueryError = results => ({
-	type: CAREER_QUERY_ERROR,
+	type: COLLEGE_QUERY_ERROR,
 	results
 })
 
 export const getCollegeQueryCall = (search) => dispatch => {
-	fetch(`https://explore-your-options.herokuapp.com/career-search/?career=${search.career}&state=${search.state}`)
+	fetch(`https://explore-your-options.herokuapp.com/college-search/?degree=${search.degree}&speciality=${search.speciality}&region=${search.region}&state=${search.state}`)
 		.then(res=>{
 			if(!res.ok){
 				return Promise.reject(res.statusText)
 			}
 			return res.json();
 		})
-		.then(careers => {
-			dispatch(collegeQuerySuccess(careers,search.state))
-			return careers
+		.then(colleges => {
+			dispatch(collegeQuerySuccess(colleges))
+			history.push('/college-results')
+			return colleges
 		})
 		.catch(err=>{
 			dispatch(collegeQueryError(err))
+			const message = {
+				message: err
+			}
+			return message;
+		})
+}
+
+export const COLLEGE_DETAIL_QUERY_SUCCESS = 'COLLEGE_DETAIL_QUERY_SUCCESS';
+export const collegeDetailQuerySuccess = (results) => ({
+	type: COLLEGE_DETAIL_QUERY_SUCCESS, 
+	results
+})
+
+export const COLLEGE_DETAIL_QUERY_ERROR = 'COLLEGE_DETAIL_QUERY_ERROR';
+export const collegeDetailQueryError = results => ({
+	type: COLLEGE_DETAIL_QUERY_ERROR,
+	results
+})
+
+export const getCollegeDetailQueryCall = (id) => dispatch => {
+	fetch(`https://explore-your-options.herokuapp.com/search/${id}`)
+		.then(res=>{
+			if(!res.ok){
+				return Promise.reject(res.statusText)
+			}
+			return res.json();
+		})
+		.then(college => {
+			dispatch(collegeDetailQuerySuccess(college))
+			return college
+		})
+		.catch(err=>{
+			dispatch(collegeDetailQueryError(err))
 			const message = {
 				message: err
 			}

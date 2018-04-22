@@ -1,38 +1,32 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 
 import Navigation from './nav';
+import College from './college';
 
 export class CollegeResults extends React.Component{
 
 	render() {
+		const colleges = this.props.searchCollegeResults
+		let items = colleges.map(college=>{
+			return <College college = {college} key={college._id}/>
+			})
+		console.log(items._id)
+		
 		return(
-				<h1>Search Results </h1><div class="row">
-					for(let i=0; i< results.length; i++) {
-						<div class="col-3">
-       						<p><span class="heavy emphasis">${results[i].INSTNM}</span><br><span class="light"> ${results[i].CITY}, ${results[i].STABBR}</span></p>
-       						<ul>
-        						<li><span class="heavy">Average Annual Cost:</span> $${numberWithCommas(results[i].NPT4)}</li>
-        						<li><span class="heavy"> Graduation Rate:</span> ${Math.round(results[i].C150_L4_POOLED_SUPP * 100)}% </li>
-       							<li><span class="heavy">Average Debt:</span> $${numberWithCommas(results[i].GRAD_DEBT_MDN_SUPP)}</li>
-       						</ul>
-       						<p class="more-details heavy"><a href="#" id=${results[i]._id}>More Details</a> </p>
-        				</div>
-						if ( i && ((i+1) % 3 === 0)) {
-							</div><div class="row">
-						} else if ((i+1) === results.length) {
-							</div>
-							<p class="new-search center"><a href="#"> new search </a></p>`
-						}
-	}
+			<div className = 'college-results'>
+				<h1>Search Results </h1>
+				<div className="row">
+				{ items }
+				</div>
+			</div>
 
 			) 
 	}
 }
 
 const mapStateToProps = state => ({
-
+	searchCollegeResults : state.exploreReducer.searchCollegeResults
 })
 
 export default connect(mapStateToProps)(CollegeResults)

@@ -13,7 +13,6 @@ export class CareerOutput extends React.Component{
 	saveData(career,user){
 		let saveDataSet = career
 		saveDataSet.user = user
-		console.log(saveDataSet)
 		this.props.postCareerData(saveDataSet)
 		
 		console.log(this.props.message)

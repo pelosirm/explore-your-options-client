@@ -42,11 +42,15 @@ export class RegionDropDownSelect extends React.Component {
 
 	onSubmit(values){
 		console.log(values)
+		let querySet = values 
+		querySet.speciality = '01'+values.speciality
+		this.props.dispatch(actions.getCollegeQueryCall(querySet))
 
 
 	}
 
 	render(){
+		console.log(searchProgram)
 
 		const searchRegion = this.props.searchRegionInput.map((region,index)=>(
 			<option value={region.CODE} key={index}> {region.REGION} </option>

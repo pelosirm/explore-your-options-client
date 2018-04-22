@@ -66,6 +66,7 @@ export const loginUser = user => dispatch => {
             }
         }).then(res => {
             if(!res.ok){
+            	dispatch(message.displayMessage('Oops! something went wrong'))
 				return Promise.reject(res.statusText)
 			}
 			return res.json();
