@@ -160,13 +160,11 @@ export const exploreReducer=(state = initialState, action) => {
 
 			college.tags = tags 
 			college.speciality = speciality
-			
+
 			return Object.assign({}, state, {
 				collegeDetail : college
 			})
-	}
-
-		else if (action.type === savedInfo.GET_USER_DATA_SUCCESS){
+	} else if (action.type === savedInfo.GET_USER_DATA_SUCCESS){
 		console.log(savedInfo.results)
 		debugger
 		return Object.assign({}, state, {

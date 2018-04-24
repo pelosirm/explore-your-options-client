@@ -534,6 +534,18 @@ select::-ms-expand {
     font-size: .8em;
 }
 
+.college-more-detail .emphasis {
+    height: 30px;
+    display: inline-block;
+    line-height: 40px;
+    font-size: 1.25em;
+}
+
+.college-more-detail li {
+    list-style-type: none;
+}
+
+
 .emphasis {
     font-size: 1em;
     color: orange;
@@ -572,6 +584,8 @@ select::-ms-expand {
     line-height: 20px;
     font-size: 22px;
 }
+
+
 
 .center {
     text-align: center;
@@ -633,7 +647,7 @@ select::-ms-expand {
     padding: 16px 32px;
     text-align: center;
     font-size: 16px;
-    margin-bottom: : 20px;
+    margin-bottom:30px;
     opacity: 1;
     transition: 0.3s;
     display: inline-block;

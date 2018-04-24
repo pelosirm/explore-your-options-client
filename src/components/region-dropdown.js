@@ -17,36 +17,17 @@ export class RegionDropDownSelect extends React.Component {
 
   	onFormChange(e) {
   		const { name } = e.target
-
   		if(name === 'region'){
   			this.props.dispatch(change('collegeSelect', 'state', null))
   		} else if ( name === 'state'){
   			this.props.dispatch(change('collegeSelect', 'region', null))
   		}
-  		
-  		// const { name, value } = e.target
-  		// this.props.dispatch(this.props.change('state', undefined))
-  		// this.props.change(e.target,undefined)
-  		// this.props.changeFieldValue('region', undefined)
-  		// if(name === 'region'){
-  		// 	e.target.form.querySelectorAll('select')[3].value=undefined
-  		// } if (name === 'state') {
-  		// 	e.target.form.querySelectorAll('select')[2].value=undefined
-  		// }
-  		// debugger
-
-
-  		// if (!name) return
- 
-		}
+	}
 
 	onSubmit(values){
-		console.log(values)
 		let querySet = values 
 		querySet.speciality = '01'+values.speciality
 		this.props.dispatch(actions.getCollegeQueryCall(querySet))
-
-
 	}
 
 	render(){

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 
 const College=({ college }) => (
 
+
 	<div className="col-3">
        	<p><span className="heavy emphasis">{college.INSTNM}</span><br></br><span className="light"> {college.CITY}, {college.STABBR}</span></p>
        	<ul>

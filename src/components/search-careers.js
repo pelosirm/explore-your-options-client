@@ -14,9 +14,7 @@ componentWillMount() {
 }
 
 onSubmit(values){
-	console.log(values)
 	this.props.dispatch(actions.getCareerQueryCall(values))
-	console.log(this.props.dispatch(actions.getCareerQueryCall(values)))
 	history.push('/career-results')
 }
 

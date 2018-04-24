@@ -42,7 +42,7 @@ export const saveCollegeSuccess = (results) => ({
 	results
 })
 
-export const SAVE_COLLEGE_ERROR = 'SAVE_COLLEGE_SUCCESS';
+export const SAVE_COLLEGE_ERROR = 'SAVE_COLLEGE_ERROR';
 export const saveCollegeError = results => ({
 	type: SAVE_COLLEGE_ERROR,
 	results
@@ -69,3 +69,37 @@ export const postCollegeData = college => dispatch => {
 		})
 
 }
+
+export const POST_COLLEGE_SUCCESS = 'POST_COLLEGE_SUCCESS';
+export const postCollegeSuccess = (results) => ({
+	type: POST_COLLEGE_SUCCESS, 
+	results
+})
+
+export const POST_COLLEGE_ERROR = 'POST_COLLEGE_ERROR';
+export const postCollegeError = results => ({
+	type: POST_COLLEGE_ERROR,
+	results
+})
+
+export const postCollegeDetailData = college => dispatch => {
+	return fetch('https://explore-your-options.herokuapp.com/save-info', {
+            method: 'POST',
+            body: JSON.stringify(college),
+            dataType:"json",
+            headers: {
+                'Content-Type': 'application/json', 
+
+            }
+        }).then(response => {
+			dispatch(postCollegeSuccess(response))
+			let message = 'College Added'
+			return message
+			
+		})        
+		.catch(err => {
+            dispatch(postCollegeError);
+        });
+
+}
+
