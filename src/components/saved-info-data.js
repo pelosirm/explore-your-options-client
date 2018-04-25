@@ -1,12 +1,13 @@
 import React from 'react';
+import { Field } from 'redux-form';
 
 const RenderSavedCareerData = (props)=> {
-	debugger
-
 	const savedCareer =props.careers.map((career,index)=>(
-		<label className="checkbox-container" key={index}>{career.career}<a href="#" className="modal_trigger info"><i class="fas fa-info"></i></a><a href="#" class="delete"><i class="fas fa-times"></i></a>
-			<input id={career._id} type="checkbox" name='career' onChange = {(e)=>props.handleCareerChange(e)}/>
-			<span className="checkmark"></span></label>
+		<label key={index} className='custom-radio'> { career.career }
+			<Field name="career" component="input" type="radio" value={career._id}/>
+			<a href="#" className="modal_trigger info"><i class="fas fa-info"></i></a><a href="#" class="delete"><i class="fas fa-times"></i></a>
+			<span className="checkmark"></span>
+		</label>
 	));
 
 	return savedCareer

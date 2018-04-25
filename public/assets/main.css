@@ -904,7 +904,7 @@ footer {
 }
 
 /* Create a custom radio button */
-.custom-radio {
+.checkmark {
     position: absolute;
     top: 0;
     left: 0;

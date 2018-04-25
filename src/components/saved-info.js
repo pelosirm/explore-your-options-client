@@ -4,6 +4,7 @@ import { reduxForm } from 'redux-form'
 import Navigation from './nav';
 
 import * as actions from '../actions/saved-info';
+import * as compareData from '../actions/compare';
 import RenderSavedCareerData from './saved-info-data';
 import RenderSavedCollegeData from './saved-college-data';
 import CheckboxGroup from './checkbox-group'
@@ -19,6 +20,7 @@ export class SavedInfo extends React.Component{
 
 	onSubmit(values){
 		console.log(values)
+		this.props.dispatch(compareData.getCompareData(values))
 	}
 
 	handleCareerChange(e){
@@ -46,12 +48,19 @@ export class SavedInfo extends React.Component{
 							<div className="col-12">
 								<h1> Saved Info </h1>
 								<p className="divide"> select one career and one college to compare return on investment </p>
-								<p className="divide orange"> careers </p>
-								{ careers ? <RenderSavedCareerData careers={careers} /> : null}
-								<p className="divide orange"> colleges</p>
-								<form>
+					
+								<form onSubmit={this.props.handleSubmit(values => this.onSubmit(values)
+								)}> 
+									<p className="divide orange"> careers </p>
+									{ colleges ? <RenderSavedCareerData careers={careers} /> : null}
+									<p className="divide orange"> colleges</p>
 									{ colleges ? <RenderSavedCollegeData colleges={colleges} /> : null}
-								</form>
+		                		<button
+		                    		type="submit"
+		                    		disabled={this.props.pristine || this.props.submitting}>
+		                    		Submit
+		                		</button>
+		                		</form>
 		                	</div>
 						</div>
 					</section>

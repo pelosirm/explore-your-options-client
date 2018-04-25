@@ -27,6 +27,7 @@ export class RegionDropDownSelect extends React.Component {
 	onSubmit(values){
 		let querySet = values 
 		querySet.speciality = '01'+values.speciality
+		console.log(values)
 		this.props.dispatch(actions.getCollegeQueryCall(querySet))
 	}
 
