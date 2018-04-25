@@ -3,6 +3,7 @@ import { Field, reduxForm, formValueSelector, change, actionCreators } from 'red
 import { connect,dispatch } from 'react-redux';
 import { bindActionCreators } from 'redux'
 import  * as actions from '../actions';
+import history from '../history';
 
 const formSelector = formValueSelector('form');
 
@@ -27,8 +28,11 @@ export class RegionDropDownSelect extends React.Component {
 	onSubmit(values){
 		let querySet = values 
 		querySet.speciality = '01'+values.speciality
-		console.log(values)
-		this.props.dispatch(actions.getCollegeQueryCall(querySet))
+		let degree = values.degree
+		return this.props.dispatch(actions.getCollegeQueryCall(querySet))
+		.then(history.push(`/college-results`))
+
+
 	}
 
 	render(){
@@ -79,7 +83,7 @@ export class RegionDropDownSelect extends React.Component {
 									<div className="select">
 										<Field 
 											id="region-select"
-											n ame="region"
+											name="region"
 											component="select"
 											type="select"
 											valuefield="value"

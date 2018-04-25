@@ -41,7 +41,7 @@ export class CollegeDetails extends React.Component {
 
   	saveInfo(e){
   		return this.props
-  		.dispatch(post.postCollegeDetailData({id:this.props.match.params.id, user:this.props.user}))
+  		.dispatch(post.postCollegeDetailData({id:this.props.match.params.id, user:this.props.user, degree:this.props.degreeValue}))
   		.then((res)=>this.props.dispatch(message.displayMessageTimer(res)))
   	}
 
@@ -158,7 +158,8 @@ export class CollegeDetails extends React.Component {
 const mapStateToProps = state => ({
 	college : state.exploreReducer.collegeDetail, 
 	user: state.exploreReducer.user, 
-	message : state.exploreReducer.message
+	message : state.exploreReducer.message,
+	degree : state.exploreReducer.degreeValue
 })
 
 export default connect(mapStateToProps)(CollegeDetails)

@@ -17,7 +17,8 @@ const initialState = {
 	message:'', 
 	userSavedData : [], 
 	searchCollegeResults : [], 
-	collegeDetail : {}
+	collegeDetail : {}, 
+	degreeValue : ''
 
 }
 
@@ -94,7 +95,12 @@ export const exploreReducer=(state = initialState, action) => {
 			searchCollegeResults : action.results
 		})
 
-	} else if (action.type === actions.COLLEGE_DETAIL_QUERY_SUCCESS){
+	} else if(action.type === actions.SAVE_DEGREE_VALUE){
+		console.log(action.degree)
+		return Object.assign({}, state, {
+			degreeValue : action.degree
+		})
+	}else if (action.type === actions.COLLEGE_DETAIL_QUERY_SUCCESS){
 			let college = action.results
 			debugger
 

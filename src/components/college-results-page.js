@@ -12,12 +12,15 @@ export class CollegeResults extends React.Component{
 			return <College college={college} key={college._id}/>
 		})
 
+		let noItems = (<p> No results for search </p>)
+
 		return(
 			<div>
 				<Navigation />
 					<div className='college-results'>
 						<h1>Search Results </h1>
 						<div className="row">
+						{ items ? null : noItems }
 						{ items }
 						</div>
 					</div>

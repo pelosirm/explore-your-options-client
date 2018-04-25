@@ -27,10 +27,17 @@ export class SavedInfo extends React.Component{
 		debugger
 	}
 
+	deleteCollege(e){
+			debugger
+	}
+
+
 	render(){
 		const careers = this.props.userSavedData[1]
 		const colleges = this.props.userSavedData[0]
 		let options = ''
+
+
 
 
 		if(careers){
@@ -52,7 +59,7 @@ export class SavedInfo extends React.Component{
 								<form onSubmit={this.props.handleSubmit(values => this.onSubmit(values)
 								)}> 
 									<p className="divide orange"> careers </p>
-									{ colleges ? <RenderSavedCareerData careers={careers} /> : null}
+									{ colleges ? <RenderSavedCareerData careers={careers} deleteCollege={this.deleteCollege()} /> : null}
 									<p className="divide orange"> colleges</p>
 									{ colleges ? <RenderSavedCollegeData colleges={colleges} /> : null}
 		                		<button
