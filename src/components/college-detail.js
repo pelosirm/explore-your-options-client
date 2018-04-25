@@ -40,10 +40,9 @@ export class CollegeDetails extends React.Component {
   	}
 
   	saveInfo(e){
-  		console.log('fired')
   		return this.props
   		.dispatch(post.postCollegeDetailData({id:this.props.match.params.id, user:this.props.user}))
-  		.then((res)=>this.props.dispatch(message.displayMessageTimer('Success')))
+  		.then((res)=>this.props.dispatch(message.displayMessageTimer(res)))
   	}
 
 	render() {
@@ -77,8 +76,6 @@ export class CollegeDetails extends React.Component {
 		    	
 		    }
 		}
-
-
 
 	return (
 		<div>

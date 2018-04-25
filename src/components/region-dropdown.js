@@ -78,7 +78,7 @@ export class RegionDropDownSelect extends React.Component {
 									<div className="select">
 										<Field 
 											id="region-select"
-											name="region"
+											n ame="region"
 											component="select"
 											type="select"
 											valuefield="value"

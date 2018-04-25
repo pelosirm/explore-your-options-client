@@ -99,6 +99,8 @@ export const postCollegeDetailData = college => dispatch => {
 		})        
 		.catch(err => {
             dispatch(postCollegeError);
+            let message = 'Oops something went wrong'
+            return message
         });
 
 }

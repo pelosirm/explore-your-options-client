@@ -1,10 +1,17 @@
 import React from 'react';
+import { Field } from 'redux-form'
+import Input from './input';
+
+
 
 const RenderSavedCollegeData = (props)=> {
-
 	const savedCollege =props.colleges.map((college,index)=>(
-		<label className="checkbox-container" id={college._id} key={index}>{college.INSTNM}<a href="#" className="modal_trigger info"><i className="fas fa-info"></i></a><a href="#" className="delete"><i className="fas fa-times"></i></a>
-		<input type="checkbox" nameName="college" /><span className="checkmark"></span></label>
+		<label key={index} className='custom-radio'>
+			<Field name="college" component={Input} type="radio" value={college._id}/>
+			{ college.INSTNM }
+			<span className="checkmark"></span>
+		</label>
+	
 	));
 
 	return savedCollege;
