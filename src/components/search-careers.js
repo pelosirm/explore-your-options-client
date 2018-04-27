@@ -19,11 +19,24 @@ onSubmit(values){
 }
 
 render() {
-	const searchCareerInput=this.props.searchCareerInput.map((career,index)=>(
+
+	let alphaSortCareers = this.props.searchCareerInput.sort(function(a, b){
+	    if(a.OCC_TITLE < b.OCC_TITLE) return -1;
+	    if(a.OCC_TITLE > b.OCC_TITLE) return 1;
+	    return 0;
+	})
+
+	let alphaSortState = this.props.searchCareerStateInput.sort(function(a, b){
+	    if(a.State < b.State) return -1;
+	    if(a.State > b.State) return 1;
+	    return 0;
+	})
+
+	const searchCareerInput=alphaSortCareers.map((career,index)=>(
 		<option value={career.OCC_CODE} key={index}> {career.OCC_TITLE} </option>
 		));
 
-	const searchCareerStateInput=this.props.searchCareerStateInput.map((state,index)=>(
+	const searchCareerStateInput=alphaSortState.map((state,index)=>(
 		<option value={state.Abbreviation} key={index}>{state.State}</option>
 		));
 

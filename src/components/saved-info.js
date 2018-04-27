@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux'
 import { reduxForm } from 'redux-form'
 import Navigation from './nav';
+import history from '../history'
 
 import * as actions from '../actions/saved-info';
 import * as compareData from '../actions/compare';
@@ -40,7 +41,10 @@ export class SavedInfo extends React.Component{
 
 	onSubmit(values){
 		console.log(values)
-		this.props.dispatch(compareData.getCompareData(values))
+		return this.props.dispatch(compareData.getCompareData(values))
+		.then((res)=>{
+			history.push('/compare')
+		})
 	}
 
 	deleteInfo(value){
@@ -60,9 +64,6 @@ export class SavedInfo extends React.Component{
 		const colleges = this.props.userSavedData[0]
 		let options = ''
 
-
-
-
 		if(careers){
 			options = careers.map((career,index)=>{
 			return { 'label' : career.career,
@@ -79,7 +80,7 @@ export class SavedInfo extends React.Component{
 								<h1> Saved Info </h1>
 								<p className="divide"> select one career and one college to compare return on investment </p>
 					
-								<form onSubmit={this.props.handleSubmit(values => this.onSubmit(values)
+						 		<form onSubmit={this.props.handleSubmit(values => this.onSubmit(values)
 								)}> 
 									<p className="divide orange"> careers </p>
 									{ colleges ? <RenderSavedCareerData careers={careers} deleteInfo={this.deleteInfo} toggleModal={this.toggleModal}/> : null}
@@ -107,10 +108,10 @@ export class SavedInfo extends React.Component{
 	}
 
 
-const mapStateToProps = state => ({
-	user : state.exploreReducer.user, 
-	userSavedData : state.exploreReducer.userSavedData
-})
+	const mapStateToProps = state => ({
+		user : state.exploreReducer.user, 
+		userSavedData : state.exploreReducer.userSavedData
+	})
 
 SavedInfo = connect(mapStateToProps)(SavedInfo)
 

@@ -13,6 +13,7 @@ import PrivateRoute from './components/private-route'
 import SavedInfo from './components/saved-info'
 import CollegeResults from './components/college-results-page'
 import CollegeDetails from './components/college-detail'
+import Compare from './components/compare-results'
 
 
 class App extends Component {
@@ -32,6 +33,7 @@ class App extends Component {
             <Route exact path="/college-results" component={CollegeResults} />>
             <Route path="/college-results/:id" component={CollegeDetails}></Route>
             <PrivateRoute exact path="/saved-info" component={SavedInfo} />
+            <PrivateRoute exact path="/compare" component={Compare} />
           </Switch>
       </div>
       </Router>

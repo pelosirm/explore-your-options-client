@@ -29,6 +29,7 @@ export class RegionDropDownSelect extends React.Component {
 		let querySet = values 
 		querySet.speciality = '01'+values.speciality
 		let degree = values.degree
+		console.log(querySet)
 		return this.props.dispatch(actions.getCollegeQueryCall(querySet))
 		.then(history.push(`/college-results`))
 
@@ -36,17 +37,28 @@ export class RegionDropDownSelect extends React.Component {
 	}
 
 	render(){
-		console.log(searchProgram)
 
 		const searchRegion = this.props.searchRegionInput.map((region,index)=>(
 			<option value={region.CODE} key={index}> {region.REGION} </option>
 		))
 
-		const searchProgram=this.props.searchProgramInput.map((program,index)=>(
+		let alphaSortPrograms = this.props.searchProgramInput.sort(function(a, b){
+		    if(a.PROGRAM < b.PROGRAM) return -1;
+		    if(a.PROGRAM > b.PROGRAM) return 1;
+		    return 0;
+		})
+
+		const searchProgram=alphaSortPrograms.map((program,index)=>(
 			<option value={program.PROGRAM} key={index}> {program.PROGRAM} </option>
 		));
 
-		const searchStateInput=this.props.searchStateInput.map((state,index)=>(
+		let alphaSortState = this.props.searchStateInput.sort(function(a, b){
+		    if(a.State < b.State) return -1;
+		    if(a.State > b.State) return 1;
+		    return 0;
+		})
+
+		const searchStateInput=alphaSortState.map((state,index)=>(
 			<option value={state.Abbreviation} key={index}>{state.State}</option>
 		));
 

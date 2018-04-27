@@ -11,7 +11,7 @@ export const getCompareDataError = results => ({
 })
 
 export const getCompareData = query => dispatch => {
-	fetch('https://explore-your-options.herokuapp.com/compare', {
+	return fetch('https://explore-your-options.herokuapp.com/compare', {
 
             method: 'POST',
             body: JSON.stringify(query),

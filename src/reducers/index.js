@@ -4,6 +4,7 @@ import * as saveData from '../actions/save-data';
 import * as message from '../actions/display-message';
 import * as savedInfo from '../actions/saved-info';
 import * as deleteInfo from '../actions/delete-info';
+import * as compare from '../actions/compare';
 
 const initialState = {
 	searchProgramInput : [], 
@@ -19,7 +20,8 @@ const initialState = {
 	userSavedData : [], 
 	searchCollegeResults : [], 
 	collegeDetail : {}, 
-	degreeValue : ''
+	degreeValue : '', 
+	compareResults :[]
 
 }
 
@@ -171,7 +173,14 @@ export const exploreReducer=(state = initialState, action) => {
 			return Object.assign({}, state, {
 				collegeDetail : college
 			})
-	} else if (action.type === savedInfo.GET_USER_DATA_SUCCESS){
+	} else if (action.type === compare.GET_COMPARE_DATA_SUCCESS){
+		debugger
+		console.log(action.results)
+		return Object.assign({}, state, {
+			compareResults : action.results
+		})
+	}
+		else if (action.type === savedInfo.GET_USER_DATA_SUCCESS){
 		console.log(savedInfo.results)
 		return Object.assign({}, state, {
 			userSavedData : action.results
