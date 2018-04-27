@@ -37,8 +37,6 @@ export class CollegeDetails extends React.Component {
 
 	componentWillMount(){
     	if(this.props.modal){
-    		debugger
-    		console.log(this.props.query)
     		this.props.dispatch(actions.getCollegeDetailQueryCall(this.props.query.id))
     	 }else {
     		this.props.dispatch(actions.getCollegeDetailQueryCall(this.props.match.params.id))
@@ -61,15 +59,16 @@ export class CollegeDetails extends React.Component {
 		const message = this.props.message
 
 		const saveButton = 
-		(<div>
-			<div className="col-12">
-			    <button className="save-college-btn" onClick={(e)=>this.saveInfo()}> Save College</button>
-			</div>
-			<div className="col-12">
-			    <p className="return-to-search new-search center"><Link to='/college-results'> return to search </Link></p>
-			</div>
-		</div>
-		)
+			(
+				<div>
+					<div className="col-12">
+					    <button className="save-college-btn" onClick={(e)=>this.saveInfo()}> Save College</button>
+					</div>
+					<div className="col-12">
+					    <p className="return-to-search new-search center"><Link to='/college-results'> return to search </Link></p>
+					</div>
+				</div>
+			)
 
 		if(tags){
 			for(let i=0; i<tags.length; i++){

@@ -18,22 +18,20 @@ export class SavedInfo extends React.Component{
   		super(props);
   		this.state = { 
   			isOpen : false,
-  			query: '' }
+  			query: '', 
+  			career : '', 
+  			category : '' }
   		this.deleteInfo = this.deleteInfo.bind(this);
   		this.toggleModal = this.toggleModal.bind(this)
 	}
 
 	toggleModal(value){
-		debugger
 		this.setState({
 			isOpen : !this.state.isOpen,
-			query: value
+			query: value.query, 
+			category : value.category
 		})
-
-		console.log(value)
 	}
-
-
 
 	componentWillMount(){
 		this.props.dispatch(actions.getUserData({ user: this.props.user}))
@@ -43,10 +41,6 @@ export class SavedInfo extends React.Component{
 	onSubmit(values){
 		console.log(values)
 		this.props.dispatch(compareData.getCompareData(values))
-	}
-
-	handleCareerChange(e){
-		debugger
 	}
 
 	deleteInfo(value){
@@ -83,9 +77,6 @@ export class SavedInfo extends React.Component{
 						<div className="row">
 							<div className="col-12">
 								<h1> Saved Info </h1>
-								<button onClick={this.toggleModal}>
-						          Open the modal
-						        </button>
 								<p className="divide"> select one career and one college to compare return on investment </p>
 					
 								<form onSubmit={this.props.handleSubmit(values => this.onSubmit(values)
@@ -105,7 +96,8 @@ export class SavedInfo extends React.Component{
 					</section>
 					<Modal show={this.state.isOpen}
 			          onClose={this.toggleModal}
-			          query={this.state.query}>
+			          query={this.state.query}
+			          category={this.state.category} >
         			</Modal>
 			</div>
 			)

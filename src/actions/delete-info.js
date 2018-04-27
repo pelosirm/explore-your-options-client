@@ -1,3 +1,4 @@
+
 export const DELETE_INFO_SUCCESS = 'DELETE_INFO_SUCCESS';
 export const deleteInfoSuccess = (results) => ({
 	type: DELETE_INFO_SUCCESS, 
@@ -17,7 +18,6 @@ export const deleteInfoCall = (info) => dispatch => {
             dataType:"json",
             headers: {
                 'Content-Type': 'application/json', 
-
             }
         })
 		.then(res => {
