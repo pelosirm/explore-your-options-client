@@ -1,8 +1,9 @@
 import * as actions from '../actions';
 import * as user from '../actions/user';
 import * as saveData from '../actions/save-data';
-import * as message from '../actions/display-message'
-import * as savedInfo from '../actions/saved-info'
+import * as message from '../actions/display-message';
+import * as savedInfo from '../actions/saved-info';
+import * as deleteInfo from '../actions/delete-info';
 
 const initialState = {
 	searchProgramInput : [], 
@@ -172,7 +173,6 @@ export const exploreReducer=(state = initialState, action) => {
 			})
 	} else if (action.type === savedInfo.GET_USER_DATA_SUCCESS){
 		console.log(savedInfo.results)
-		debugger
 		return Object.assign({}, state, {
 			userSavedData : action.results
 		})
@@ -183,7 +183,6 @@ export const exploreReducer=(state = initialState, action) => {
 			isAuthenticated : false 
 		})
 	} 
-
 	return state;
 
 }

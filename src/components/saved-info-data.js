@@ -2,10 +2,17 @@ import React from 'react';
 import { Field } from 'redux-form';
 
 const RenderSavedCareerData = (props)=> {
+	const category = "career"
 	const savedCareer =props.careers.map((career,index)=>(
 		<label key={index} className='custom-radio'> { career.career }
 			<Field name="career" component="input" type="radio" value={career._id}/>
-			<a href="#" className="modal_trigger info"><i class="fas fa-info"></i></a><a href="#" class="delete"><i class="fas fa-times"></i></a>
+			<span className="delete"
+				  onClick={()=>props.toggleModal({"id": career._id})}>
+					<i class="fas fa-info"></i>
+			</span>
+			<span className="delete" onClick={()=>props.deleteInfo({"id": career._id,"category" :category})}>
+				<i class="fas fa-times"></i>
+			</span>
 			<span className="checkmark"></span>
 		</label>
 	));

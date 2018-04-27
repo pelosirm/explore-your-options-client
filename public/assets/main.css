@@ -518,6 +518,10 @@ select::-ms-expand {
     color: orange;
 }
 
+.delete {
+
+}
+
 .heavy {
     font-weight: 200;
     text-transform: uppercase;
@@ -674,13 +678,14 @@ select::-ms-expand {
     text-transform: uppercase;
 }
 
-.saved-options a {
+.delete  {
     color: #DCDCDC;
     font-size: 20px;
+    cursor:pointer;
 }
 
-.saved-options a:hover {
-    color: orange;
+.delete:hover {
+    color: red;
 }
 
 .divide {

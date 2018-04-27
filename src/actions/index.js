@@ -151,6 +151,8 @@ export const collegeDetailQueryError = results => ({
 })
 
 export const getCollegeDetailQueryCall = (id) => dispatch => {
+	debugger
+	console.log(id)
 	fetch(`https://explore-your-options.herokuapp.com/search/${id}`)
 		.then(res=>{
 			if(!res.ok){
