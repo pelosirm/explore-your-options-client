@@ -105,9 +105,9 @@ export class CollegeDetails extends React.Component {
 			  				<li><span className="heavy"> School Details: </span>
 			  				{ tagString }
 							</li>
-							<li><span className="heavy">Average Annual Cost:</span> {college.NPT4}</li>
+							<li><span className="heavy">Average Annual Cost:</span> ${college.NPT4}</li>
 			    			<li><span className="heavy"> Graduation Rate:</span> {Math.round(college.C150_L4_POOLED_SUPP*100)} %</li>
-			    			<li><span className="heavy">Average Debt:</span> {college.GRAD_DEBT_MDN_SUPP}</li>
+			    			<li><span className="heavy">Average Debt:</span> ${college.GRAD_DEBT_MDN_SUPP}</li>
 			    		</ul>
 			   				<button className="accordion" onClick={this.handleCostClick}>
 			    				<i className="fa fa-chevron-down" aria-hidden="true"></i> Cost Details </button>

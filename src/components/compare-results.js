@@ -3,9 +3,6 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import Navigation from './nav'
 export class Compare extends React.Component{
-	constructor(props){
-		super(props)
-	}
 
 	render(){
 		let results = this.props.compareResults
@@ -13,10 +10,10 @@ export class Compare extends React.Component{
 
 		if(results[0][0]["st_a_median"] === 'No data' || results[0][0]["st_a_median"] === ''){
 		 	let salary = results[0][0]['nat_a_median'].replace(',','')
-			calculationData.salary = parseInt(salary)
+			calculationData.salary = parseInt(salary,10)
 		} else {
 			let salaryNat = results[0][0]['st_a_median'].replace(',','')
-			calculationData.salary = parseInt(salaryNat)
+			calculationData.salary = parseInt(salaryNat,10)
 		}
 
 		let interval;

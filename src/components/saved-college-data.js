@@ -12,10 +12,10 @@ const RenderSavedCollegeData = (props)=> {
 			<span className="checkmark"></span>
 			<span className="delete"
 				  onClick={()=>props.toggleModal({"query": college.ORIGINALID,"category":category})}>
-					<i class="fas fa-info"></i>
+					<i className="fas fa-info"></i>
 			</span>
 			<span className="delete" onClick={()=>props.deleteInfo({"id": college._id,"category" :category})}>
-				<i class="fas fa-times" ></i>
+				<i className="fas fa-times" ></i>
 			</span>
 			
 		</label>

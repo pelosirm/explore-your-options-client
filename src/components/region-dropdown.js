@@ -1,11 +1,9 @@
 import React from 'react';
-import { Field, reduxForm, formValueSelector, change, actionCreators } from 'redux-form';
-import { connect,dispatch } from 'react-redux';
+import { Field, reduxForm, formValueSelector, change } from 'redux-form';
+import { connect, dispatch } from 'react-redux';
 import { bindActionCreators } from 'redux'
 import  * as actions from '../actions';
 import history from '../history';
-
-const formSelector = formValueSelector('form');
 
 export class RegionDropDownSelect extends React.Component {
 

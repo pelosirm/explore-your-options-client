@@ -11,8 +11,7 @@ export default class SignUp extends React.Component{
 			<header className="header-image">
 			</header>
 			<Navigation />
-			<NewUser />
-			
+			<NewUser />	
 		</div>
 	);
   }

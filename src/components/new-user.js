@@ -1,14 +1,34 @@
 import React from 'react';
 import { reduxForm, Field, focus } from 'redux-form';
-import {required, nonEmpty} from '../validators';
-import { Link } from 'react-router-dom'
+import { required, nonEmpty } from '../validators';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import Input from './input';
-import * as user from '../actions/user'
+import DisplayMessage from './message';
+import * as user from '../actions/user';
+import * as messageAction from '../actions/display-message';
+import history from '../history'
 
 export class NewUser extends React.Component{
 	onSubmit(values){
-        this.props.dispatch(user.createUser(values))
+        return this.props
+        .dispatch(user.createUser(values))
+        .then((res)=>{
+            console.log(res)
+            if(res.status !== 200){
+                this.props.dispatch(messageAction.displayMessage('Oops! something went wrong'))
+            } else {
+                console.log('fired')
+                history.push('/search-page')
+            }
+        })
 	}
+
+    componentDidUpdate(){
+        setTimeout(() => {
+            this.props.dispatch(messageAction.hideDisplayMessage())
+        }, 2000)    
+    }
 
 	render(){
 		let successMessage;
@@ -27,10 +47,20 @@ export class NewUser extends React.Component{
             );
         }
 
+        let displayMessage;
+        if(this.props.message) {
+            displayMessage = (
+                    <DisplayMessage message={this.props.message} />
+                );
+
+        }
+
 		return(
+            <div>
+            { displayMessage }
 			<section className="sign-up">
-				<div class="login input-square create-new">
-		            <form class="form-create-new"
+				<div className="login input-square create-new">
+		            <form className="form-create-new"
 		            	onSubmit={this.props.handleSubmit(values =>
 		            		this.onSubmit(values)
 		            	)}>
@@ -63,16 +93,23 @@ export class NewUser extends React.Component{
                     		disabled={this.props.pristine || this.props.submitting}>
                     		Submit
                 		</button>
-		                <p> already a user? <Link to="/sign-in" class="nav-login">login</Link></p>
+		                <p> already a user? <Link to="/sign-in" className="nav-login">login</Link></p>
 		            </form>
 		        </div>
 		    </section>
+        </div>
 		);
 	}
 }
 
+const mapStateToProps=state => ({
+  message : state.exploreReducer.message
+});
+
+NewUser = connect(mapStateToProps)(NewUser);
+
 export default reduxForm({
-    form: 'contact',
+    form: 'newUser',
     onSubmitFail: (errors, dispatch) =>
-        dispatch(focus('contact', Object.keys(errors)[0]))
+        dispatch(focus('newUser', Object.keys(errors)[0]))
 })(NewUser);

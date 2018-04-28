@@ -5,6 +5,10 @@ import Navigation from './nav';
 import College from './college';
 
 export class CollegeResults extends React.Component{
+	
+	componentDidMount(){
+		window.scrollTo(0,0);
+	}
 
 	render() {
 		const colleges=this.props.searchCollegeResults

@@ -1,15 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
-
 import Navigation from './nav';
 import RegionDropDownSelect from './region-dropdown'
 
 
 export default class SearchCollegesPage extends React.Component{
-
 	render(){
-
 		return(
 			<div>
 				<Navigation />

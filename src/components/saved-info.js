@@ -10,7 +10,6 @@ import * as deleteAction from '../actions/delete-info';
 import * as message from '../actions/display-message'
 import RenderSavedCareerData from './saved-info-data';
 import RenderSavedCollegeData from './saved-college-data';
-import CheckboxGroup from './checkbox-group';
 import Modal from './modal'
 
 export class SavedInfo extends React.Component{
@@ -40,7 +39,6 @@ export class SavedInfo extends React.Component{
 
 
 	onSubmit(values){
-		console.log(values)
 		return this.props.dispatch(compareData.getCompareData(values))
 		.then((res)=>{
 			history.push('/compare')
@@ -62,14 +60,6 @@ export class SavedInfo extends React.Component{
 	render(){
 		const careers = this.props.userSavedData[1]
 		const colleges = this.props.userSavedData[0]
-		let options = ''
-
-		if(careers){
-			options = careers.map((career,index)=>{
-			return { 'label' : career.career,
-			  'value' : career._id, 'id':career._id }
-			})
-		}
 
 		return(
 			<div>

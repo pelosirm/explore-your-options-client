@@ -20,18 +20,18 @@ class App extends Component {
 
   render() {
     return (
-      <Router history={history}>
+      <Router onUpdate={() => window.scrollTo(0, 0)} history={history}>
         <div>
           <Switch>
             <Route exact path="/" component={FrontPage} />
-            <Route exact path="/search-colleges-page" component={SearchCollegesPage} />
-            <Route exact path="/search-careers-page" component={SearchCareersPage} />
-            <PrivateRoute path="/search-page" component={SearchPage} />
+            <PrivateRoute exact path="/search-colleges-page" component={SearchCollegesPage} />
+            <PrivateRoute exact path="/search-careers-page" component={SearchCareersPage} />
+            <PrivateRoute exact path="/search-page" component={SearchPage} />
             <Route exact path="/sign-in" component={SignIn} />
             <Route exact path="/sign-up" component={SignUp} />
             <PrivateRoute exact path="/career-results" component={CareerOutput} />
-            <Route exact path="/college-results" component={CollegeResults} />>
-            <Route path="/college-results/:id" component={CollegeDetails}></Route>
+            <PrivateRoute exact path="/college-results" component={CollegeResults} />
+            <PrivateRoute path="/college-results/:id" component={CollegeDetails} />
             <PrivateRoute exact path="/saved-info" component={SavedInfo} />
             <PrivateRoute exact path="/compare" component={Compare} />
           </Switch>

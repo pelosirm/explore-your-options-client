@@ -14,6 +14,6 @@ export const displayMessageTimer = (message)=>dispatch=>{
 	dispatch(displayMessage(message))
 	setTimeout(() => {
   		dispatch(hideDisplayMessage())
-	}, 3000)
+	}, 2000)
 	
 }

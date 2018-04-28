@@ -1,5 +1,3 @@
-import history from '../history'
-
 export const GET_CAREER_INPUT = 'GET_CAREER_INPUT'; 
 export const getCareerInput = results => ({
 	type: GET_CAREER_INPUT, 
@@ -151,8 +149,6 @@ export const collegeDetailQueryError = results => ({
 })
 
 export const getCollegeDetailQueryCall = (id) => dispatch => {
-	debugger
-	console.log(id)
 	fetch(`https://explore-your-options.herokuapp.com/search/${id}`)
 		.then(res=>{
 			if(!res.ok){

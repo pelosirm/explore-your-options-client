@@ -23,20 +23,18 @@ export const createUser = user => dispatch => {
             dataType:"json",
             headers: {
                 'Content-Type': 'application/json', 
-
             }
-        }).then(res => {
-            if(!res.ok){
-            	dispatch(message.displayMessage('Oops! something went wrong'))
-				return Promise.reject(res.statusText)
-			}
-			return res.json();
         }).then(response => {
 			dispatch(createUserSuccess(response,user.username))
-			history.push('/search-page')
+			console.log(response)
 			return response
+		}).catch(err=>{
+			dispatch(createUserError(err))
+			const message = {
+				message: err
+			}
+			return message;
 		})
-
 }
 
 
@@ -56,24 +54,22 @@ export const loginUserError = results => ({
 
 
 export const loginUser = user => dispatch => {
-	fetch('https://explore-your-options.herokuapp.com/users/login', {
+	return fetch('https://explore-your-options.herokuapp.com/users/login', {
             method: 'POST',
             body: JSON.stringify(user),
             dataType:"json",
             headers: {
                 'Content-Type': 'application/json', 
-
             }
-        }).then(res => {
-            if(!res.ok){
-            	dispatch(message.displayMessage('Oops! something went wrong'))
-				return Promise.reject(res.statusText)
-			}
-			return res.json();
         }).then(response => {
 			dispatch(loginUserSuccess(response,user.username))
-			history.push('/search-page')
 			return response
+		}).catch(err=>{
+			dispatch(loginUserError(err))
+			const message = {
+				message: err
+			}
+			return message;
 		})
 
 }
