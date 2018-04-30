@@ -1,5 +1,5 @@
 import React from 'react';
-import { reduxForm, Field, focus } from 'redux-form';
+import { reduxForm, Field, focus, SubmissionError } from 'redux-form';
 import { required, nonEmpty } from '../validators';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -8,6 +8,7 @@ import DisplayMessage from './message';
 import * as user from '../actions/user';
 import * as messageAction from '../actions/display-message';
 import history from '../history'
+
 
 export class NewUser extends React.Component{
 	onSubmit(values){
@@ -23,6 +24,7 @@ export class NewUser extends React.Component{
             }
         })
 	}
+
 
     componentDidUpdate(){
         setTimeout(() => {
@@ -61,9 +63,9 @@ export class NewUser extends React.Component{
 			<section className="sign-up">
 				<div className="login input-square create-new">
 		            <form className="form-create-new"
-		            	onSubmit={this.props.handleSubmit(values =>
-		            		this.onSubmit(values)
-		            	)}>
+		            	onSubmit={this.props.handleSubmit(values => 
+                                this.onSubmit(values)
+                            )}>
 		            	{successMessage}
                 		{errorMessage}
 		                <legend> Create New User </legend>

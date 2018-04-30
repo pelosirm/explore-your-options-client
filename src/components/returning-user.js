@@ -11,11 +11,23 @@ import DisplayMessage from './message'
 import history from '../history'
 
 export class ReturningUser extends React.Component{
+	constructor(props){
+		super(props);
+		this.state={
+			loading:false
+		}
+	}
 
 	onSubmit(values) {
+		this.setState({
+			loading : true
+		})
 		return this.props
 		.dispatch(user.loginUser(values))
 		.then((res)=>{
+			this.setState({
+				loading:false
+			})
 			if(res.status !== 200){
 				this.props.dispatch(messageAction.displayMessage('Oops! something went wrong'))
 			} else {
@@ -55,6 +67,12 @@ export class ReturningUser extends React.Component{
 					<DisplayMessage message={this.props.message} />
 				);
 
+		}
+
+		if(this.props.loading){
+			return(
+		    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" />
+		    )
 		}
 		
 		return(

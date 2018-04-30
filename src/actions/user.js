@@ -17,7 +17,7 @@ export const createUserError = results => ({
 
 
 export const createUser = user => dispatch => {
-	fetch('https://explore-your-options.herokuapp.com/users/create', {
+	return fetch('https://explore-your-options.herokuapp.com/users/create', {
             method: 'POST',
             body: JSON.stringify(user),
             dataType:"json",
@@ -26,7 +26,6 @@ export const createUser = user => dispatch => {
             }
         }).then(response => {
 			dispatch(createUserSuccess(response,user.username))
-			console.log(response)
 			return response
 		}).catch(err=>{
 			dispatch(createUserError(err))
@@ -80,8 +79,6 @@ export const logoutUser = () => ({
 })
 
 export const logoutUserRedirect = () => dispatch => {
-	console.log('logout fired')
-	dispatch(logoutUser())
-	history.push('/')
+	 dispatch(logoutUser())
 
 }

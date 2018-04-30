@@ -3,11 +3,13 @@ import { Link } from 'react-router-dom';
 import { logoutUserRedirect } from '../actions/user';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux'
+import history from '../history'
 
 export class NavLoggedIn extends React.Component{
    
     handleOnClick(){
         this.props.logoutUserRedirect()
+        history.push('/')
     }
 
     render(){
