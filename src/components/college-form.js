@@ -1,9 +1,9 @@
 import React from 'react';
 import { Field, reduxForm, change } from 'redux-form';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux'
+import { bindActionCreators } from 'redux';
 import  * as actions from '../actions';
-import * as message from '../actions/display-message'
+import * as message from '../actions/display-message';
 import history from '../history';
 
 export class CollegeForm extends React.Component {

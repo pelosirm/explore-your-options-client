@@ -28,7 +28,6 @@ export const getCompareData = query => dispatch => {
 		})
 		.then(info => {
 			dispatch(getCompareDataSuccess(info))
-			console.log(info)
 			return info
 		})
 		.catch(err=>{
