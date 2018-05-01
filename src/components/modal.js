@@ -28,7 +28,7 @@ class Modal extends React.Component {
 
     return (
         <div className="modal" style={block}>
-          <div className ="modal-content">
+          <div className="modal-content">
               <span className="close" onClick={this.props.onClose}>&times;</span>
                   <div className="row career-column modal-fill">
                   {modalContent}
@@ -45,7 +45,7 @@ class Modal extends React.Component {
   }
 }
 
-Modal.propTypes = {
+Modal.propTypes={
   onClose: PropTypes.func.isRequired,
   category : PropTypes.string, 
   show: PropTypes.bool,
