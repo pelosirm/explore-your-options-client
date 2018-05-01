@@ -7,27 +7,16 @@ import { required, nonEmpty } from '../validators';
 import Input from './input';
 import * as user from '../actions/user';
 import * as messageAction from '../actions/display-message';
-import DisplayMessage from './message'
 import history from '../history'
 
 export class ReturningUser extends React.Component{
-	constructor(props){
-		super(props);
-		this.state={
-			loading:false
-		}
-	}
 
 	onSubmit(values) {
-		this.setState({
-			loading : true
-		})
+		this.props.dispatch(messageAction.loadingTrue())
 		return this.props
 		.dispatch(user.loginUser(values))
 		.then((res)=>{
-			this.setState({
-				loading:false
-			})
+			this.props.dispatch(messageAction.loadingFalse())
 			if(res.status !== 200){
 				this.props.dispatch(messageAction.displayMessage('Oops! something went wrong'))
 			} else {
@@ -39,52 +28,25 @@ export class ReturningUser extends React.Component{
 	componentDidUpdate(){
 		setTimeout(() => {
 	  		this.props.dispatch(messageAction.hideDisplayMessage())
-		}, 2000)	
+		}, 3000)	
 	}
 
 	render(){
-
-		let successMessage;
-		if(this.props.submitSucceeded) {
-			successMessage = (
-					<div className="message message-success">
-						Message submitted successfully
-					</div>
-				);
-
-		}
-
 		let errorMessage; 
 		if(this.props.error) {
 			errorMessage = (
 				<div className="message message-error"> { this.props.error } </div>
 			)
 		}
-
-		let displayMessage;
-		if(this.props.message) {
-			displayMessage = (
-					<DisplayMessage message={this.props.message} />
-				);
-
-		}
-
-		if(this.props.loading){
-			return(
-		    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" />
-		    )
-		}
 		
 		return(
 			<div>
-				{ displayMessage }
 				<section className="sign-up">
 			        <div className="login input-square returning-user">
 			            <form className="form-returning-user"
 			            	onSubmit={this.props.handleSubmit(values => 
 			            		this.onSubmit(values)
 			            	)}>
-			            	{ successMessage }
 			            	{ errorMessage }
 			                <legend> Login </legend>
 			                <p className='demo-user'> for demo username : 'demo' password : 'demo' </p>

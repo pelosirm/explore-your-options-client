@@ -75,7 +75,7 @@ export const careerQueryError = results => ({
 })
 
 export const getCareerQueryCall = (search) => dispatch => {
-	fetch(`https://explore-your-options.herokuapp.com/career-search/?career=${search.career}&state=${search.state}`)
+	return fetch(`https://explore-your-options.herokuapp.com/career-search/?career=${search.career}&state=${search.state}`)
 		.then(res=>{
 			if(!res.ok){
 				return Promise.reject(res.statusText)
@@ -149,7 +149,7 @@ export const collegeDetailQueryError = results => ({
 })
 
 export const getCollegeDetailQueryCall = (id) => dispatch => {
-	fetch(`https://explore-your-options.herokuapp.com/search/${id}`)
+	return fetch(`https://explore-your-options.herokuapp.com/search/${id}`)
 		.then(res=>{
 			if(!res.ok){
 				return Promise.reject(res.statusText)

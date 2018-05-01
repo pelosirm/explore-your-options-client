@@ -1,6 +1,3 @@
-import history from '../history'
-import * as message from './display-message';
-
 export const CREATE_USER_SUCCESS = 'CREATE_USER_SUCCESS';
 export const createUserSuccess = (results,username) => ({
 	type: CREATE_USER_SUCCESS, 

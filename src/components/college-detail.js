@@ -2,15 +2,18 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
 import DisplayMessage from './message';
-
-import * as actions from '../actions'
-import * as message from '../actions/display-message'
-import * as post from '../actions/save-data'
-
-
 import Navigation from './nav';
 
+import * as actions from '../actions';
+import * as message from '../actions/display-message';
+import * as post from '../actions/save-data';
+
+
 export class CollegeDetails extends React.Component {
+	
+	componentDidMount(){
+		window.scrollTo(0,0);
+	}
 
 	constructor(props) {
     	super(props);

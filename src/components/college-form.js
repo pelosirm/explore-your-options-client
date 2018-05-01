@@ -1,11 +1,12 @@
 import React from 'react';
-import { Field, reduxForm, formValueSelector, change } from 'redux-form';
-import { connect, dispatch } from 'react-redux';
+import { Field, reduxForm, change } from 'redux-form';
+import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
 import  * as actions from '../actions';
+import * as message from '../actions/display-message'
 import history from '../history';
 
-export class RegionDropDownSelect extends React.Component {
+export class CollegeForm extends React.Component {
 
 
 	componentWillMount(){
@@ -26,12 +27,12 @@ export class RegionDropDownSelect extends React.Component {
 	onSubmit(values){
 		let querySet = values 
 		querySet.speciality = '01'+values.speciality
-		let degree = values.degree
-		console.log(querySet)
+		this.props.dispatch(message.loadingTrue())
 		return this.props.dispatch(actions.getCollegeQueryCall(querySet))
-		.then(history.push(`/college-results`))
-
-
+		.then((res)=>{
+			this.props.dispatch(message.loadingFalse())
+			history.push(`/college-results`)
+		})
 	}
 
 	render(){
@@ -142,9 +143,9 @@ function mapDispatchToProps(dispatch) {
 }
 
 
-RegionDropDownSelect = connect(mapStateToProps,mapDispatchToProps)(RegionDropDownSelect);
+CollegeForm = connect(mapStateToProps,mapDispatchToProps)(CollegeForm);
 
 export default reduxForm({
 	form: 'collegeSelect'
-})(RegionDropDownSelect)
+})(CollegeForm)
 

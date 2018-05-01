@@ -21,7 +21,6 @@ export const deleteInfoCall = (info) => dispatch => {
             }
         })
 		.then(res => {
-			console.log(res)
 			dispatch(deleteInfoSuccess(res))
 			let success = {
 				message : res.status

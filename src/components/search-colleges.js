@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Navigation from './nav';
-import RegionDropDownSelect from './region-dropdown'
+import CollegeForm from './college-form'
 
 
 export default class SearchCollegesPage extends React.Component{
@@ -19,7 +19,7 @@ export default class SearchCollegesPage extends React.Component{
 					            </div>
 					    </div>
 			            <div className="col-6 container search-colleges">
-			            	<RegionDropDownSelect />
+			            	<CollegeForm />
 			            </div>
 			        </div>
 			    </section>

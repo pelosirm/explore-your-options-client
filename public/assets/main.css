@@ -115,6 +115,11 @@ html {
     line-height: 0;
 }
 
+.center-load{
+    display:block;
+    margin:auto;
+}
+
 /* nav bar */
 
 .navigation {
@@ -152,6 +157,10 @@ a {
 
 a:hover {
     color: orange;
+}
+
+.login a {
+    color:#23CFFF;
 }
 
 .right {
@@ -254,6 +263,10 @@ button {
 
 button:hover {
     background-color: orange;
+}
+
+.sign-up-btn a {
+    color:white;
 }
 
 /* how it works section */

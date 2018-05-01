@@ -20,18 +20,28 @@ const initialState = {
     searchCollegeResults: [],
     collegeDetail: {},
     degreeValue: '',
-    compareResults: []
+    compareResults: [], 
+    loading: ''
 
 }
 
 export const exploreReducer = (state = initialState, action) => {
+
+        //user logins 
 
         if (action.type === user.CREATE_USER_SUCCESS || action.type === user.LOGIN_USER_SUCCESS) {
             return Object.assign({}, state, {
                 user: action.username,
                 isAuthenticated: true
             })
-        } else if (action.type === message.DISPLAY_MESSAGE) {
+        } else if (action.type === user.CREATE_USER_ERROR || action.type === user.LOGIN_USER_ERROR){
+            return Object.assign({}, state, {
+                isAuthenticated: false
+            })
+        } 
+
+        // display messages 
+        else if (action.type === message.DISPLAY_MESSAGE) {
             console.log(message.message)
             return Object.assign({}, state, {
                 message: action.message
@@ -40,7 +50,23 @@ export const exploreReducer = (state = initialState, action) => {
             return Object.assign({}, state, {
                 message: ''
             })
-        } else if (action.type === actions.GET_COLLEGE_INPUT) {
+        } 
+
+        //loading gif updates
+
+        else if (action.type === message.LOADING_TRUE){
+            return Object.assign({},state,{
+                loading: true 
+            })
+        } else if (action.type === message.LOADING_FALSE){
+            return Object.assign({},state,{
+                loading:false
+            })
+        }
+
+        //set input values for form dropdowns
+
+         else if (action.type === actions.GET_COLLEGE_INPUT) {
             const output = Object.assign({}, state, {
                 searchProgramInput: action.results[0],
                 searchStateInput: action.results[1],
@@ -52,7 +78,11 @@ export const exploreReducer = (state = initialState, action) => {
                 searchCareerInput: action.results[0],
                 searchCareerStateInput: action.results[1]
             })
-        } else if (action.type === actions.CAREER_QUERY_SUCCESS) {
+        } 
+
+        //search for career
+
+        else if (action.type === actions.CAREER_QUERY_SUCCESS) {
             console.log(action.results)
             if (!action.results[1]) {
                 return Object.assign({}, state, {
@@ -82,7 +112,10 @@ export const exploreReducer = (state = initialState, action) => {
                 return Object.assign({}, state, {
                     savedCareer: true
                 })
-            } else if (action.type === actions.COLLEGE_QUERY_SUCCESS) {
+            } 
+
+        //search for college and format details
+        else if (action.type === actions.COLLEGE_QUERY_SUCCESS) {
 
                 return Object.assign({}, state, {
                     searchCollegeResults: action.results
@@ -159,15 +192,48 @@ export const exploreReducer = (state = initialState, action) => {
                 return Object.assign({}, state, {
                     collegeDetail: college
                 })
-            } else if (action.type === compare.GET_COMPARE_DATA_SUCCESS) {
+            }
+            //compare data
+            else if (action.type === compare.GET_COMPARE_DATA_SUCCESS) {
+
+                let calculationData = {}
+                let results = action.results
+
+                if(results[0][0]["st_a_median"] === 'No data' || results[0][0]["st_a_median"] === ''){
+                    let salary = results[0][0]['nat_a_median'].replace(',','')
+                    calculationData.salary = parseInt(salary,10)
+                } else {
+                    let salaryNat = results[0][0]['st_a_median'].replace(',','')
+                    calculationData.salary = parseInt(salaryNat,10)
+                }
+
+                let interval;
+                if(results[1][0]['HIGHDEG'] === 2){
+                    interval = 2
+                } else {
+                    interval = 4
+                }
+
+                calculationData.ROI = ((calculationData.salary * 20) - 827136 - (results[1][0]['NPT4'] * interval))
+                calculationData.career = results[0][0]['career']
+                calculationData.college = results[1][0]['INSTNM']
+
+                console.log(calculationData)
+
                 return Object.assign({}, state, {
-                    compareResults: action.results
+                    compareResults: calculationData
                 })
-            } else if (action.type === savedInfo.GET_USER_DATA_SUCCESS) {
+            } 
+
+            //get user saved data
+            else if (action.type === savedInfo.GET_USER_DATA_SUCCESS) {
                 return Object.assign({}, state, {
                     userSavedData: action.results
                 })
-            } else if (action.type === user.LOGOUT_USER) {
+            } 
+
+            //logout user
+            else if (action.type === user.LOGOUT_USER) {
                 return Object.assign({}, state, {
                     user: '',
                     isAuthenticated: false

@@ -2,24 +2,30 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
-import Navigation from './nav'
-import * as actions from '../actions'
-import history from '../history' 
+import Navigation from './nav';
+import * as actions from '../actions';
+import * as message from '../actions/display-message';
+import history from '../history';
 
 
 export class SearchCareersPage extends React.Component{
 
 componentWillMount() {
 	this.props.dispatch(actions.getCareerInputCall());
+
 }
 
 onSubmit(values){
-	this.props.dispatch(actions.getCareerQueryCall(values))
-	history.push('/career-results')
+	this.props.dispatch(message.loadingTrue())
+	return this.props
+	.dispatch(actions.getCareerQueryCall(values))
+	.then((res)=>{
+		this.props.dispatch(message.loadingFalse())
+		history.push('/career-results')
+	})
 }
 
 render() {
-
 	let alphaSortCareers = this.props.searchCareerInput.sort(function(a, b){
 	    if(a.OCC_TITLE < b.OCC_TITLE) return -1;
 	    if(a.OCC_TITLE > b.OCC_TITLE) return 1;

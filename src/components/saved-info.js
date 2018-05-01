@@ -49,9 +49,10 @@ export class SavedInfo extends React.Component{
 			return this.props
 			.dispatch(deleteAction.deleteInfoCall(value))
 			.then((res)=>{ 
-				if(res.message===204)
+				if(res.message===204) {
 				this.props.dispatch(actions.getUserData({ user: this.props.user}))
-				this.props.dispatch(message.displayMessageTimer(res.message))
+				this.props.dispatch(message.displayMessageTimer('Item Deleted'))
+			    }
 			})
 			
 	}

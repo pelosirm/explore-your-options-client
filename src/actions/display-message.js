@@ -14,6 +14,17 @@ export const displayMessageTimer = (message)=>dispatch=>{
 	dispatch(displayMessage(message))
 	setTimeout(() => {
   		dispatch(hideDisplayMessage())
-	}, 2000)
+	}, 3000)
 	
 }
+
+
+export const LOADING_TRUE = 'LOADING_TRUE';
+export const loadingTrue = () => ({
+	type: LOADING_TRUE
+})
+
+export const LOADING_FALSE = 'LOADING_FALSE';
+export const loadingFalse = () => ({
+	type: LOADING_FALSE 
+})

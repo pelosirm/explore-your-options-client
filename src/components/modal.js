@@ -16,7 +16,7 @@ class Modal extends React.Component {
 
     let modalContent;
     if(this.props.category === "college"){
-      modalContent = (
+      modalContent=(
           <CollegeDetails modal={true} query={this.props.query}/>
           )
       } else {

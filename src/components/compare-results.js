@@ -6,24 +6,6 @@ export class Compare extends React.Component{
 
 	render(){
 		let results = this.props.compareResults
-		let calculationData = {}
-
-		if(results[0][0]["st_a_median"] === 'No data' || results[0][0]["st_a_median"] === ''){
-		 	let salary = results[0][0]['nat_a_median'].replace(',','')
-			calculationData.salary = parseInt(salary,10)
-		} else {
-			let salaryNat = results[0][0]['st_a_median'].replace(',','')
-			calculationData.salary = parseInt(salaryNat,10)
-		}
-
-		let interval;
-		if(results[1][0]['HIGHDEG'] === 2){
-			interval = 2
-		} else {
-			interval = 4
-		}
-
-		let ROI = ((calculationData.salary * 20) - 827136 - (results[1][0]['NPT4'] * interval))
 
 		return(
 			<div>
@@ -31,14 +13,14 @@ export class Compare extends React.Component{
 				<section className="comparison">
 					<div className="row">
 						<div className="col-12">
-							<p><span className="light">as a </span><span className="heavy emphasis orange">{results[0][0]['career']}</span>
+							<p><span className="light">as a </span><span className="heavy emphasis orange">{results.career}</span>
 								<br></br>
 								<span className="light"> attending</span>
-								<span className="heavy emphasis orange"> {results[1][0]['INSTNM']} </span>
+								<span className="heavy emphasis orange"> {results.college} </span>
 							</p>
 							<p><span className="light"> return on investment over 20 years: </span>
 								<br></br>
-								<span className="heavy emphasis orange">{ROI}</span>
+								<span className="heavy emphasis orange">{results.ROI}</span>
 							</p>
 						</div>
 					</div>

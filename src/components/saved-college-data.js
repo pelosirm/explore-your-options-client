@@ -1,8 +1,5 @@
 import React from 'react';
-import { Field } from 'redux-form'
-import Input from './input';
-
-
+import { Field } from 'redux-form';
 
 const RenderSavedCollegeData = (props)=> {
 	const category = "college"

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Router, Route, Switch } from 'react-router-dom';
+import { connect } from 'react-redux'
 import history from './history';
 
 import FrontPage from './components/front-page'
@@ -18,7 +19,18 @@ import Compare from './components/compare-results'
 
 class App extends Component {
 
+
+
   render() {
+
+    if(this.props.loading){
+      return(
+        <div className='center-load'>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" alt='loading' />
+        </div>
+        )
+    }
+
     return (
       <Router onUpdate={() => window.scrollTo(0, 0)} history={history}>
         <div>
@@ -40,5 +52,11 @@ class App extends Component {
     );
   }
 }
+
+const mapStateToProps=state => ({
+  loading : state.exploreReducer.loading
+});
+
+App = connect(mapStateToProps)(App);
 
 export default App;
