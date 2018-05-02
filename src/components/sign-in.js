@@ -1,6 +1,7 @@
 import React from 'react';
 import Navigation from './nav';
 import ReturningUser from './returning-user';
+import Footer from './footer'
 
 export default class SignIn extends React.Component{
 
@@ -12,7 +13,7 @@ export default class SignIn extends React.Component{
 			</header>
 			<Navigation />
 			<ReturningUser />
-			
+			<Footer />
 		</div>
 	);
   }

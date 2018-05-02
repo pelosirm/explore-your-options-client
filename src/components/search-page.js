@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import Navigation from './nav';
+import Footer from './footer';
 
 export default class SearchPage extends React.Component {
 	render() {
@@ -25,6 +26,7 @@ export default class SearchPage extends React.Component {
 			            	</div>
 			       		</div>
 			    	</section>
+			    	<Footer />
 			   </div>
 	)
   }

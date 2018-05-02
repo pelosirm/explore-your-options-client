@@ -118,13 +118,10 @@ export const exploreReducer = (state = initialState, action) => {
         else if (action.type === actions.COLLEGE_QUERY_SUCCESS) {
 
                 return Object.assign({}, state, {
-                    searchCollegeResults: action.results
+                    searchCollegeResults: action.results,
+                    degreeValue : action.degree
                 })
 
-            } else if (action.type === actions.SAVE_DEGREE_VALUE) {
-                return Object.assign({}, state, {
-                    degreeValue: action.degree
-                })
             } else if (action.type === actions.COLLEGE_DETAIL_QUERY_SUCCESS) {
                 let college = action.results
                 let tags = []

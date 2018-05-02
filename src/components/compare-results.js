@@ -1,8 +1,12 @@
 import React from 'react';
-import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
-import Navigation from './nav'
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import Navigation from './nav';
+import Footer from './footer';
 export class Compare extends React.Component{
+	componentDidMount(){
+		window.scrollTo(0,0);
+	}
 
 	render(){
 		let results = this.props.compareResults
@@ -27,6 +31,7 @@ export class Compare extends React.Component{
 					<p className="new-search center back"><Link to='/saved-info'> back </Link>
 					</p>
 				</section>
+				<Footer />
 			</div>
 
 		)

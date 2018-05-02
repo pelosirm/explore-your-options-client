@@ -97,9 +97,10 @@ export const getCareerQueryCall = (search) => dispatch => {
 
 
 export const COLLEGE_QUERY_SUCCESS = 'COLLEGE_QUERY_SUCCESS';
-export const collegeQuerySuccess = (results) => ({
+export const collegeQuerySuccess = (results,degree) => ({
 	type: COLLEGE_QUERY_SUCCESS, 
-	results
+	results,
+	degree
 })
 
 export const COLLEGE_QUERY_ERROR = 'COLLEGE_QUERY_ERROR';
@@ -108,13 +109,9 @@ export const collegeQueryError = results => ({
 	results
 })
 
-export const SAVE_DEGREE_VALUE= 'SAVE_DEGREE_VALUE';
-export const saveDegreeValue = degree => ({
-	type: SAVE_DEGREE_VALUE,
-	degree
-})
 
 export const getCollegeQueryCall = (search) => dispatch => {
+	debugger
 	return fetch(`https://explore-your-options.herokuapp.com/college-search/?degree=${search.degree}&speciality=${search.speciality}&region=${search.region}&state=${search.state}`)
 		.then(res=>{
 			if(!res.ok){
@@ -123,8 +120,8 @@ export const getCollegeQueryCall = (search) => dispatch => {
 			return res.json();
 		})
 		.then(colleges => {
-			dispatch(collegeQuerySuccess(colleges))
-			dispatch(saveDegreeValue(search.degree))
+			console.log(search.degree)
+			dispatch(collegeQuerySuccess(colleges,search.degree))
 			return colleges
 		})
 		.catch(err=>{

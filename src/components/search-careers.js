@@ -6,6 +6,7 @@ import Navigation from './nav';
 import * as actions from '../actions';
 import * as message from '../actions/display-message';
 import history from '../history';
+import Footer from './footer'
 
 
 export class SearchCareersPage extends React.Component{
@@ -103,6 +104,7 @@ render() {
 	            </div>
 	        </div>
 	    </section>
+	    <Footer />
 	   </div>
 	);
   }

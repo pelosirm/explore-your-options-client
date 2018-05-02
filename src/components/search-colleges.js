@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Navigation from './nav';
-import CollegeForm from './college-form'
+import CollegeForm from './college-form';
+import Footer from './footer';
 
 
 export default class SearchCollegesPage extends React.Component{
@@ -23,6 +24,7 @@ export default class SearchCollegesPage extends React.Component{
 			            </div>
 			        </div>
 			    </section>
+			   <Footer />
 			</div>
 		)
 	}

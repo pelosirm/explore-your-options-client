@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { reduxForm } from 'redux-form'
 import Navigation from './nav';
 import history from '../history'
+import Footer from './footer'
 
 import * as actions from '../actions/saved-info';
 import * as compareData from '../actions/compare';
@@ -86,6 +87,7 @@ export class SavedInfo extends React.Component{
 		                	</div>
 						</div>
 					</section>
+					<Footer />
 					<Modal show={this.state.isOpen}
 			          onClose={this.toggleModal}
 			          query={this.state.query}

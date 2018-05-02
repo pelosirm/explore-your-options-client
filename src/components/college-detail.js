@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
 import DisplayMessage from './message';
 import Navigation from './nav';
+import Footer from './footer'
 
 import * as actions from '../actions';
 import * as message from '../actions/display-message';
@@ -48,7 +49,7 @@ export class CollegeDetails extends React.Component {
 
   	saveInfo(e){
   		return this.props
-  		.dispatch(post.postCollegeDetailData({id:this.props.match.params.id, user:this.props.user, degree:this.props.degreeValue}))
+  		.dispatch(post.postCollegeDetailData({id:this.props.match.params.id, user:this.props.user, degree:this.props.degree}))
   		.then((res)=>this.props.dispatch(message.displayMessageTimer(res)))
   	}
 
@@ -162,6 +163,7 @@ export class CollegeDetails extends React.Component {
 			    		{ this.props.modal ? null : saveButton }
 			   		</div>
 	   	</section>
+	   	<Footer />
    	</div>
 	)
   }

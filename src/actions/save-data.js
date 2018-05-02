@@ -37,9 +37,10 @@ export const postCareerData = career => dispatch => {
 }
 
 export const SAVE_COLLEGE_SUCCESS = 'SAVE_COLLEGE_SUCCESS';
-export const saveCollegeSuccess = (results) => ({
+export const saveCollegeSuccess = (results,degree) => ({
 	type: SAVE_COLLEGE_SUCCESS, 
-	results
+	results, 
+	degree
 })
 
 export const SAVE_COLLEGE_ERROR = 'SAVE_COLLEGE_ERROR';
@@ -63,7 +64,7 @@ export const postCollegeData = college => dispatch => {
 			}
 			return res.json();
         }).then(response => {
-			dispatch(saveCollegeSuccess(response))
+			dispatch(saveCollegeSuccess(response,college.degree))
 			history.push('/college-results')
 			return response
 		})
@@ -83,6 +84,7 @@ export const postCollegeError = results => ({
 })
 
 export const postCollegeDetailData = college => dispatch => {
+	console.log(college)
 	return fetch('https://explore-your-options.herokuapp.com/save-info', {
             method: 'POST',
             body: JSON.stringify(college),

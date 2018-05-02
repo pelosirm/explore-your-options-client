@@ -26,8 +26,6 @@ export const getUserData = user => dispatch => {
 			}
 			return res.json();
         }).then(response => {
-        	console.log(response)
-        	debugger
 			dispatch(getUserDataSuccess(response))
 			return response
 		})

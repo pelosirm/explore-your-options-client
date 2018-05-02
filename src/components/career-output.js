@@ -1,10 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 import DisplayMessage from './message';
 import Navigation from './nav';
+import Footer from './footer';
 
 import * as actions from '../actions/save-data';
 
@@ -69,6 +70,7 @@ export class CareerOutput extends React.Component{
 				    </div>
 				   	{ saveButton }
     			</section>
+    			<Footer />
     		</div>
 
 			)

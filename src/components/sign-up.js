@@ -1,6 +1,7 @@
-import React from 'react'
+import React from 'react';
 import Navigation from './nav';
-import NewUser from './new-user'
+import NewUser from './new-user';
+import Footer from './footer';
 
 
 export default class SignUp extends React.Component{
@@ -12,6 +13,7 @@ export default class SignUp extends React.Component{
 			</header>
 			<Navigation />
 			<NewUser />	
+			<Footer />
 		</div>
 	);
   }
