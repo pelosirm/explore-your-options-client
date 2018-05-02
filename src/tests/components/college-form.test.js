@@ -26,22 +26,35 @@ describe('<CollegeForm />', () => {
         shallow(<CollegeForm />);
     });
 
-    it('Dispatches getCollegeInputCall on mount', () => {
+    it('Should return the action', () => {
+        const action = actions.getCollegeInputCall();
+        expect(action.type).toEqual(actions.GET_COLLEGE_INPUT);
+    });
+
+    it('Should dispatch fetchBoardSuccess', () => {
+        const board = {
+            lists: []
+        };
+
         global.fetch = jest.fn().mockImplementation(() =>
             Promise.resolve({
                 ok: true,
                 json() {
-                    return results;
+                    return colleges
                 }
             })
         );
 
         const dispatch = jest.fn();
-        return getCollegeInputCall()(dispatch).then(() => {
+        return actions.getCollegeInputCall()(dispatch).then(() => {
             expect(fetch).toHaveBeenCalledWith('/search-colleges-page');
-            expect(dispatch).toHaveBeenCalledWith(getCollegeInput(results));
         });
     });
+
+
+
+
+
 
 });
 
