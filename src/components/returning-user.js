@@ -11,11 +11,14 @@ import history from '../history'
 
 export class ReturningUser extends React.Component{
 
+	//returning user form
+
 	onSubmit(values) {
 		this.props.dispatch(messageAction.loadingTrue())
 		return this.props
 		.dispatch(user.loginUser(values))
 		.then((res)=>{
+			//message handling for incorrect response
 			this.props.dispatch(messageAction.loadingFalse())
 			if(res.status !== 200){
 				this.props.dispatch(messageAction.displayMessage('Oops! something went wrong'))
@@ -25,6 +28,7 @@ export class ReturningUser extends React.Component{
 		})
 	}
 
+	//reset message
 	componentDidUpdate(){
 		setTimeout(() => {
 	  		this.props.dispatch(messageAction.hideDisplayMessage())

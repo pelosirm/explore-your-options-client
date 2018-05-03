@@ -11,11 +11,13 @@ import Footer from './footer'
 
 export class SearchCareersPage extends React.Component{
 
+//get selection for drop down menues
 componentWillMount() {
 	this.props.dispatch(actions.getCareerInputCall());
 
 }
 
+//fetch results
 onSubmit(values){
 	this.props.dispatch(message.loadingTrue())
 	return this.props
@@ -27,6 +29,8 @@ onSubmit(values){
 }
 
 render() {
+
+	// alpha sort return from fetch
 	let alphaSortCareers = this.props.searchCareerInput.sort(function(a, b){
 	    if(a.OCC_TITLE < b.OCC_TITLE) return -1;
 	    if(a.OCC_TITLE > b.OCC_TITLE) return 1;

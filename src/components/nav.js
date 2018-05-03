@@ -9,7 +9,7 @@ import DisplayMessage from './message';
 
 
 export class Navigation extends React.Component {
-
+    //return proper sub navigation based on logged in or not
 
     render() {
 

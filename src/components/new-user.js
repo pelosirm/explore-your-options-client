@@ -11,7 +11,7 @@ import history from '../history'
 
 export class NewUser extends React.Component{
 
-
+    //form for new users
 	onSubmit(values){
         this.props.dispatch(messageAction.loadingTrue())
         return this.props

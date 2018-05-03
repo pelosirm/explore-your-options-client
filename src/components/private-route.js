@@ -3,6 +3,8 @@ import { Redirect, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types';
 
+//redirect to sign if is user is not authenticated
+
 const PrivateRoute = ({ component: Component, isAuthenticated, ...rest }) => {
 
   return (

@@ -8,6 +8,7 @@ import history from '../history';
 
 export class CollegeForm extends React.Component {
 
+	//form handling for college search
 
 	componentWillMount(){
     	this.props.dispatch(actions.getCollegeInputCall())
@@ -15,6 +16,7 @@ export class CollegeForm extends React.Component {
   	}
   	
   	onFormChange(e) {
+  		//make sure you can only select state or region
   		const { name } = e.target
   		if(name === 'region'){
   			this.props.dispatch(change('collegeSelect', 'state', null))
@@ -35,7 +37,7 @@ export class CollegeForm extends React.Component {
 	}
 
 	render(){
-
+		//alpha sort drop downs
 		const searchRegion = this.props.searchRegionInput.map((region,index)=>(
 			<option value={region.CODE} key={index}> {region.REGION} </option>
 		))

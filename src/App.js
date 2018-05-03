@@ -19,20 +19,23 @@ import Compare from './components/compare-results'
 
 class App extends Component {
 
-
-
   render() {
 
+    // if loading show lodaing gif
     if(this.props.loading){
       return(
+      <div className="center">
         <div className='center-load'>
           <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" alt='loading' />
         </div>
-        )
+      </div>
+      )
     }
 
+    //else routes
+
     return (
-      <Router onUpdate={() => window.scrollTo(0, 0)} history={history}>
+      <Router history={history}>
         <div>
           <Switch>
             <Route exact path="/" component={FrontPage} />

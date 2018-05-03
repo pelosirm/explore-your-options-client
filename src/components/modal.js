@@ -5,6 +5,7 @@ import CareerOutput from './career-output'
 
 class Modal extends React.Component {
 
+  // modal content for more info
   render() {
     if(!this.props.show) {
       return null;
