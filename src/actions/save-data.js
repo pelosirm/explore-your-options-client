@@ -84,7 +84,6 @@ export const postCollegeError = results => ({
 })
 
 export const postCollegeDetailData = college => dispatch => {
-	console.log(college)
 	return fetch('https://explore-your-options.herokuapp.com/save-info', {
             method: 'POST',
             body: JSON.stringify(college),

@@ -21,7 +21,6 @@ export class NewUser extends React.Component{
             if(res.status !== 200){
                 this.props.dispatch(messageAction.displayMessage('Oops! something went wrong'))
             } else {
-                console.log('fired')
                 history.push('/search-page')
             }
         })

@@ -42,7 +42,6 @@ export const exploreReducer = (state = initialState, action) => {
 
         // display messages 
         else if (action.type === message.DISPLAY_MESSAGE) {
-            console.log(message.message)
             return Object.assign({}, state, {
                 message: action.message
             })
@@ -83,7 +82,6 @@ export const exploreReducer = (state = initialState, action) => {
         //search for career
 
         else if (action.type === actions.CAREER_QUERY_SUCCESS) {
-            console.log(action.results)
             if (!action.results[1]) {
                 return Object.assign({}, state, {
                     searchCareerResults: {
@@ -214,8 +212,6 @@ export const exploreReducer = (state = initialState, action) => {
                 calculationData.ROI = ((calculationData.salary * 20) - 827136 - (results[1][0]['NPT4'] * interval))
                 calculationData.career = results[0][0]['career']
                 calculationData.college = results[1][0]['INSTNM']
-
-                console.log(calculationData)
 
                 return Object.assign({}, state, {
                     compareResults: calculationData
