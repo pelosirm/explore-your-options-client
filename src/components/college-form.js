@@ -13,8 +13,7 @@ export class CollegeForm extends React.Component {
     	this.props.dispatch(actions.getCollegeInputCall())
   
   	}
-
-
+  	
   	onFormChange(e) {
   		const { name } = e.target
   		if(name === 'region'){

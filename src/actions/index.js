@@ -41,7 +41,7 @@ export const getCollegeInputError = error => ({
 })
 
 export const getCollegeInputCall = () => dispatch => {
-	fetch('https://explore-your-options.herokuapp.com/college')
+	return fetch('https://explore-your-options.herokuapp.com/college')
 		.then(res=>{
 			if(!res.ok){
 				return Promise.reject(res.statusText)

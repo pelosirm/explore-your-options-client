@@ -22,8 +22,7 @@ export const createUser = user => dispatch => {
                 'Content-Type': 'application/json', 
             }
         }).then(response => {
-			dispatch(createUserSuccess(response,user.username))
-			return response
+			return dispatch(createUserSuccess(response,user.username))
 		}).catch(err=>{
 			dispatch(createUserError(err))
 			const message = {

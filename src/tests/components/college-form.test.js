@@ -9,52 +9,28 @@ Enzyme.configure({adapter: new Adapter()});
 import CollegeForm from '../../components/college-form';
 
 
-const mockCollegeInputAction = {
-    type: 'GET_COLLEGE_INPUT'
-};
-jest.mock('../../actions', () => Object.assign({},
-    require.requireActual('../../actions'),
-    {
-       getCollegeInputCall: jest.fn().mockImplementation(() => {
-            return mockCollegeInputAction;
-        })
-    }
-));
-
 describe('<CollegeForm />', () => {
     it('Renders without crashing', () => {
         shallow(<CollegeForm />);
     });
 
-    it('Should return the action', () => {
-        const action = actions.getCollegeInputCall();
-        expect(action.type).toEqual(actions.GET_COLLEGE_INPUT);
-    });
 
-    it('Should dispatch fetchBoardSuccess', () => {
-        const board = {
-            lists: []
-        };
+    it('Should dispatch getCollegeInput', () => {
 
         global.fetch = jest.fn().mockImplementation(() =>
             Promise.resolve({
                 ok: true,
                 json() {
-                    return colleges
+                    return board;
                 }
             })
         );
 
         const dispatch = jest.fn();
         return actions.getCollegeInputCall()(dispatch).then(() => {
-            expect(fetch).toHaveBeenCalledWith('/search-colleges-page');
+            expect(fetch).toHaveBeenCalledWith('https://explore-your-options.herokuapp.com/college');
         });
     });
-
-
-
-
-
 
 });
 
