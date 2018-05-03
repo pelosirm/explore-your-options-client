@@ -120,7 +120,6 @@ export const getCollegeQueryCall = (search) => dispatch => {
 			return res.json();
 		})
 		.then(colleges => {
-			console.log(search.degree)
 			dispatch(collegeQuerySuccess(colleges,search.degree))
 			return colleges
 		})
