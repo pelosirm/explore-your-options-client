@@ -1030,6 +1030,19 @@ footer {
         font-family: 'Barlow', sans-serif;
     }
 
+    .saved-options form {
+        margin:0;
+    }
+
+    .career-results p, .college-more-detail p, .comparison p {
+    font-size: 18px;
+}
+
+.college-more-detail .panel li {
+    font-weight: 200;
+    font-size: 16px;
+}
+
 
 }
 
@@ -1045,5 +1058,17 @@ footer {
         display: block;
         width: 100%;
     }
+
+    .saved-options form {
+        margin:0;
+    }
+
+    .career-results p, .college-more-detail p, .comparison p {
+    font-size: 18px;
+}
+.college-more-detail .panel li {
+    font-weight: 200;
+    font-size: 16px;
+}
 
 }
