@@ -41,7 +41,7 @@ export class CollegeDetails extends React.Component {
 
 	componentWillMount(){
     	if(this.props.modal){
-    		this.props.dispatch(actions.getCollegeDetailQueryCall(this.props.query.id))
+    		this.props.dispatch(actions.getCollegeDetailQueryCall(this.props.query))
     	 }else {
     		this.props.dispatch(actions.getCollegeDetailQueryCall(this.props.match.params.id))
     	}
