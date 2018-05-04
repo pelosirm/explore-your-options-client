@@ -820,6 +820,7 @@ footer {
     height: 50px;
     padding-top: 10px;
     font-family: 'Lobster', cursive;
+    z-index:2000;
 }
 
 .button {
