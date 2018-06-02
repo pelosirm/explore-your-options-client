@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import { reduxForm } from 'redux-form'
+import { Link } from 'react-router-dom'
 import Navigation from './nav';
 import history from '../history'
 import Footer from './footer'
@@ -59,9 +60,30 @@ export class SavedInfo extends React.Component{
 	}
 
 
+
+
 	render(){
-		const careers = this.props.userSavedData[1]
-		const colleges = this.props.userSavedData[0]
+		const careers = this.props.userSavedData[1];
+		const colleges = this.props.userSavedData[0];
+
+
+
+		if(careers && !careers.length > 0 && colleges && !colleges.length > 0){
+			return (
+				<div> 
+					<Navigation />
+					<section className="saved-options">
+						<div className="row">
+							<div className="col-12">
+								<h1 className="center"> Oops, it looks like you haven't added anything.</h1>
+								<button className="header-button sign-up-btn"><Link to="/search-page"> Start Searching</Link></button>
+							</div>
+						</div>
+					</section>
+				</div>
+
+				)
+		}
 
 		return(
 			<div>
@@ -77,7 +99,7 @@ export class SavedInfo extends React.Component{
 									<p className="divide orange"> careers </p>
 									{ colleges ? <RenderSavedCareerData careers={careers} deleteInfo={this.deleteInfo} toggleModal={this.toggleModal}/> : null}
 									<p className="divide orange"> colleges</p>
-									{ colleges ? <RenderSavedCollegeData colleges={colleges} deleteInfo={this.deleteInfo} toggleModal={this.toggleModal}/> : null}
+									{ colleges ? <RenderSavedCollegeData colleges={colleges} deleteInfo={this.deleteInfo} toggleModal={this.toggleModal}/> : null }
 		                		<button
 		                    		type="submit"
 		                    		disabled={this.props.pristine || this.props.submitting}>

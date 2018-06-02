@@ -65,11 +65,15 @@ export class CollegeDetails extends React.Component {
 		const saveButton = 
 			(
 				<div>
-					<div className="col-12">
-					    <button className="save-college-btn" onClick={(e)=>this.saveInfo()}> Save College</button>
+					<div className="row">
+						<div className="col-12">
+						    <button className="save-college-btn" onClick={(e)=>this.saveInfo()}> Save College</button>
+						</div>
 					</div>
-					<div className="col-12">
-					    <p className="return-to-search new-search center"><Link to='/college-results'> return to search </Link></p>
+					<div className="row">
+						<div className="col-12">
+						    <p className="return-to-search new-search center"><Link to='/college-results'> return to search </Link></p>
+						</div>
 					</div>
 				</div>
 			)

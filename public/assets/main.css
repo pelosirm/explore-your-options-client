@@ -82,7 +82,7 @@ html {
     left: 0;
     right: 0;
     bottom: 0;
-    height: 90vh;
+    height: 100vh;
     background-size: cover;
     background: url("img/header-img.jpg") no-repeat center center scroll;
     -webkit-background-size: cover;
@@ -176,6 +176,9 @@ a:hover {
     font-family: 'Lobster', cursive;
 }
 
+.center {
+    text-align: center
+}
 /* login/sign up */
 
 .input-square {
@@ -183,15 +186,11 @@ a:hover {
     top: 190px;
     left: 25%;
     width: 50%;
-    height: 60%;
     background-color: rgba(248, 248, 248, 1);
     border-radius: 25px;
     font-family: 'Barlow', sans-serif;
 }
 
-.returning-user {
-    height: 60%
-}
 
 .login p {
     text-align: center;
@@ -312,8 +311,8 @@ button:hover {
 }
 
 .how-it-works p {
-    padding-left: 20px;
-    padding-right: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
 .title-details {
@@ -807,21 +806,51 @@ select::-ms-expand {
     background-color: #ffbf00;
 }
 
+/* footer information */
 footer {
     position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
-  padding: 1rem;
-  text-align: center;
-    background: black;
+    padding: 1rem;
+    text-align: center;
+    background: #181818;
     color: white;
     text-align: center;
-    height: 50px;
+    height: 75px;
     padding-top: 10px;
-    font-family: 'Lobster', cursive;
+    font-family: 'Assistant', sans-serif;
+    font-weight: 200;
     z-index:2000;
 }
+
+footer a {
+    color:white;
+}
+
+.contact-info {
+  padding-top: 5px;
+  text-align:center;
+}
+
+#top {
+  cursor: pointer
+}
+
+.icon {
+    display: inline-block;
+    color: white;
+    padding-left: 10px
+}
+
+
+i {
+    text-align:center;
+    color:white;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
 
 .button {
     background-color: orange;
@@ -846,66 +875,28 @@ footer {
 }
 
 
-/* checkbox */
-
-/*.checkbox-container {
-    display: block;
+button.header-button {
+    background-color: orange;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    font-size: 16px;
+    margin: 0 auto;
+    opacity: 1;
+    transition: 0.3s;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+    width: 25%;
+    left:unset;
     position: relative;
-    padding-left: 35px;
-    margin-bottom: 12px;
-    cursor: pointer;
-    font-size: 22px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+    margin-top:30px;
 }
 
-.checkbox-container input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
+.header-button:hover {
+    background-color: #23CFFF;
 }
-
-.checkmark {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 25px;
-    width: 25px;
-    background-color: #eee;
-}
-
-.checkbox-container:hover input ~ .checkmark {
-    background-color: #ccc;
-}
-
-.checkbox-container input:checked ~ .checkmark {
-    background-color: #2196F3;
-}
-
-.checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
-}
-
-.checkbox-container input:checked ~ .checkmark:after {
-    display: block;
-}
-
-.checkbox-container .checkmark:after {
-    left: 9px;
-    top: 5px;
-    width: 5px;
-    height: 10px;
-    border: solid white;
-    border-width: 0 3px 3px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-}
-*/
 
 /* The container */
 .custom-radio {
@@ -921,14 +912,14 @@ footer {
     user-select: none;
 }
 
-/* Hide the browser's default radio button */
+/* custom radio button */
 .custom-radio input {
     position: absolute;
     opacity: 0;
     cursor: pointer;
 }
 
-/* Create a custom radio button */
+
 .checkmark {
     position: absolute;
     top: 0;
@@ -939,29 +930,25 @@ footer {
     border-radius: 50%;
 }
 
-/* On mouse-over, add a grey background color */
+
 .custom-radio:hover input ~ .checkmark {
     background-color: #ccc;
 }
 
-/* When the radio button is checked, add a blue background */
 .custom-radio input:checked ~ .checkmark {
     background-color: #2196F3;
 }
 
-/* Create the indicator (the dot/circle - hidden when not checked) */
 .checkmark:after {
     content: "";
     position: absolute;
     display: none;
 }
 
-/* Show the indicator (dot/circle) when checked */
 .custom-radio input:checked ~ .checkmark:after {
     display: block;
 }
 
-/* Style the indicator (dot/circle) */
 .custom-radio .checkmark:after {
     top: 9px;
     left: 9px;
@@ -975,7 +962,7 @@ footer {
     .header-text h1 {
         font-size: 4em;
         font-weight: 300;
-        line-height: 50px;
+        line-height: 60px;
         font-family: 'Lobster',
         cursive;
 
@@ -1070,6 +1057,25 @@ footer {
 .college-more-detail .panel li {
     font-weight: 200;
     font-size: 16px;
+}
+
+button.header-button {
+    background-color: orange;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    font-size: 16px;
+    margin: 0 auto;
+    opacity: 1;
+    transition: 0.3s;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+    width: 100%;
+    left:unset;
+    position: relative;
+    margin-top:30px;
 }
 
 }

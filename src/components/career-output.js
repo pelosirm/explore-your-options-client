@@ -14,6 +14,9 @@ export class CareerOutput extends React.Component{
 	saveData(career,user){
 		let saveDataSet = career
 		saveDataSet.user = user
+		if(saveDataSet.st_a_median === undefined){
+			saveDataSet.st_a_median = 'No Data'
+		}
 		this.props.postCareerData(saveDataSet)
 	}
 

@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
 
 export default function HowItWorks(props) {
     return (
@@ -12,13 +11,7 @@ export default function HowItWorks(props) {
             </div>
             <div className="col-6 details red">
                 <p className="title-details"> search careers</p>
-                <p> search by career and location to return:</p>
-                <ul>
-                    <li>national median salary</li>
-                    <li>local median salary</li>
-                    <li>education required</li>
-                    <li>number of years of experience</li>
-                </ul>
+                <p> search by career and location to gain an understanding of the local market. find national and local median salary, education and experience required. </p>
             </div>
         </div>
         <div className="row">
@@ -26,13 +19,7 @@ export default function HowItWorks(props) {
             </div>
             <div className="col-6 details left gold">
                 <p className="title-details"> search colleges</p>
-                <p> search colleges by degree, speciality and location to return:</p>
-                <ul>
-                    <li> average cost</li>
-                    <li> average debt</li>
-                    <li> average salaray 10 years after graduation</li>
-                    <li> program and cost details </li>
-                </ul>
+                <p> search colleges by degree, speciality and location to return to find some options of colleges. discover average cost, debt, and salary 10 years after graduation.</p>
             </div>
         </div>
         <div className="row">
@@ -40,12 +27,7 @@ export default function HowItWorks(props) {
             </div>
             <div className="col-6 details">
                 <p className="title-details"> compare</p>
-                <p> compare colleges against desires career and calculate return on investment.</p>
-            </div>
-        </div>
-        <div className="row">
-            <div className="col-12">
-                <button className="button sign-up-btn"><Link to="sign-up"> Sign Up</Link></button>
+                <p> compare colleges against desired career and calculate return on investment over 20 years.</p>
             </div>
         </div>
     </section>

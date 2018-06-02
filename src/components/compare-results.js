@@ -8,7 +8,14 @@ export class Compare extends React.Component{
 		window.scrollTo(0,0);
 	}
 
+
+
 	render(){
+		
+		const numberWithCommas = (x) => {
+  			return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+		}
+
 		let results = this.props.compareResults
 
 		return(
@@ -24,7 +31,7 @@ export class Compare extends React.Component{
 							</p>
 							<p><span className="light"> return on investment over 20 years: </span>
 								<br></br>
-								<span className="heavy emphasis orange">{results.ROI}</span>
+								<span className="heavy emphasis orange">$ {numberWithCommas(results.ROI)}</span>
 							</p>
 						</div>
 					</div>

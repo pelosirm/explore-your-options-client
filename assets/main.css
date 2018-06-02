@@ -82,7 +82,7 @@ html {
     left: 0;
     right: 0;
     bottom: 0;
-    height: 95vh;
+    height: 100vh;
     background-size: cover;
     background: url("img/header-img.jpg") no-repeat center center scroll;
     -webkit-background-size: cover;
@@ -174,6 +174,10 @@ a:hover {
 .left a {
     color: white;
     font-family: 'Lobster', cursive;
+}
+
+.center {
+    text-align: center !important
 }
 
 /* login/sign up */
@@ -312,8 +316,8 @@ button:hover {
 }
 
 .how-it-works p {
-    padding-left: 20px;
-    padding-right: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
 .title-details {
@@ -469,7 +473,7 @@ select::-ms-expand {
 
 .college-results,
 .career-results,
-.college-more-detail, 
+.college-more-detail,
 .saved-options {
     margin-top: 100px;
 }
@@ -636,7 +640,7 @@ select::-ms-expand {
     font-size: 30px;
 }
 
-.career-results, 
+.career-results,
 .comparison{
     margin-top: 150px;
 }
@@ -844,67 +848,30 @@ footer {
     background-color: #23CFFF;
 }
 
-
-/* checkbox */
-
-/*.checkbox-container {
-    display: block;
+button.header-button {
+    background-color: orange;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    font-size: 16px;
+    margin: 0 auto;
+    opacity: 1;
+    transition: 0.3s;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+    width: 25%;
+    left:unset;
     position: relative;
-    padding-left: 35px;
-    margin-bottom: 12px;
-    cursor: pointer;
-    font-size: 22px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+    margin-top:30px;
 }
 
-.checkbox-container input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
+.header-button:hover {
+    background-color: #23CFFF;
 }
 
-.checkmark {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 25px;
-    width: 25px;
-    background-color: #eee;
-}
 
-.checkbox-container:hover input ~ .checkmark {
-    background-color: #ccc;
-}
-
-.checkbox-container input:checked ~ .checkmark {
-    background-color: #2196F3;
-}
-
-.checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
-}
-
-.checkbox-container input:checked ~ .checkmark:after {
-    display: block;
-}
-
-.checkbox-container .checkmark:after {
-    left: 9px;
-    top: 5px;
-    width: 5px;
-    height: 10px;
-    border: solid white;
-    border-width: 0 3px 3px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-}
-*/
 
 /* The container */
 .custom-radio {
@@ -974,7 +941,7 @@ footer {
     .header-text h1 {
         font-size: 4em;
         font-weight: 300;
-        line-height: 50px;
+        line-height: 60px;
         font-family: 'Lobster',
         cursive;
 
@@ -1053,7 +1020,26 @@ footer {
     .saved-options form {
         margin:0;
     }
-    
+
+    button.header-button {
+        background-color: orange;
+        border: none;
+        color: white;
+        padding: 16px 32px;
+        text-align: center;
+        font-size: 16px;
+        margin: 0 auto;
+        opacity: 1;
+        transition: 0.3s;
+        display: inline-block;
+        text-decoration: none;
+        cursor: pointer;
+        width: 100%;
+        left:unset;
+        position: relative;
+        margin-top:30px;
+    }   
+
 
 
 }
